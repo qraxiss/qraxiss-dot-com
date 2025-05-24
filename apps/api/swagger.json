@@ -1,0 +1,294 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/check": {
+      "get": {
+        "operationId": "AuthController_",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IsUserLoggedResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT-auth": []
+          }
+        ],
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/logs/error/{lines}": {
+      "get": {
+        "operationId": "LogsController_getErrorLogs",
+        "parameters": [
+          {
+            "name": "lines",
+            "required": true,
+            "in": "path",
+            "description": "Number of error log lines to retrieve",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT-auth": []
+          }
+        ],
+        "tags": [
+          "logs"
+        ]
+      }
+    },
+    "/logs/output/{lines}": {
+      "get": {
+        "operationId": "LogsController_getOutputLogs",
+        "parameters": [
+          {
+            "name": "lines",
+            "required": true,
+            "in": "path",
+            "description": "Number of output log lines to retrieve",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT-auth": []
+          }
+        ],
+        "tags": [
+          "logs"
+        ]
+      }
+    },
+    "/web/{path}": {
+      "get": {
+        "operationId": "WebController_serveApp",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Web"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "",
+    "description": "",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "JWT-auth": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      },
+      "AdminKey": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "user@mail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "password123!"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_token"
+        ]
+      },
+      "ErrorDto": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stack": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "name",
+          "stack"
+        ]
+      },
+      "LoginResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginDto"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDto"
+          }
+        },
+        "required": [
+          "success",
+          "data",
+          "error"
+        ]
+      },
+      "IsUserLoggedDto": {
+        "type": "object",
+        "properties": {
+          "logged": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "logged"
+        ]
+      },
+      "IsUserLoggedResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/IsUserLoggedDto"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDto"
+          }
+        },
+        "required": [
+          "success",
+          "data",
+          "error"
+        ]
+      },
+      "LogResponseDto": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDto"
+          }
+        },
+        "required": [
+          "success",
+          "data",
+          "error"
+        ]
+      }
+    }
+  }
+}

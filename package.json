@@ -1,0 +1,18 @@
+{
+  "name": "freelance-template",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "generate": "chmod +x ./scripts/axios-generator.sh && ./scripts/axios-generator.sh",
+    "change-name": "chmod +x ./scripts/change-name.sh && ./scripts/change-name.sh",
+    "nginx": "chmod +x ./scripts/nginx.sh && ./scripts/nginx.sh",
+    "create-db": "chmod +x ./scripts/create-db.sh && ./scripts/create-db.sh",
+    "web-build": "chmod +x ./scripts/web-build.sh && ./scripts/web-build.sh",
+    "url-post-fix": "chmod +x ./scripts/url-post-fix.sh && ./scripts/url-post-fix.sh",
+    "start": "chmod +x ./scripts/start-nest.sh && ./scripts/start-nest.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
