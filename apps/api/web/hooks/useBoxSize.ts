@@ -23,48 +23,54 @@ export function useBoxSize(options: UseBoxSizeOptions): BoxSize {
   const isMounted = useIsMounted();
   const previousSize = useRef<BoxSize>({ ...initialSize });
   const onResize = useRef<((size: BoxSize) => void) | undefined>(undefined);
+
   onResize.current = options.onResize;
 
+  // BASIT ÇÖZÜM: setTimeout kullanarak
   useEffect(() => {
-    if (!ref.current) return;
-
     if (typeof window === "undefined" || !("ResizeObserver" in window)) return;
 
-    const observer = new ResizeObserver(([entry]) => {
-      const boxProp =
-        box === "border-box"
+    const timeout = setTimeout(() => {
+      if (!ref.current) return;
+
+      const observer = new ResizeObserver(([entry]) => {
+        const boxProp = box === "border-box"
           ? "borderBoxSize"
           : box === "device-pixel-content-box"
             ? "devicePixelContentBoxSize"
             : "contentBoxSize";
 
-      const newWidth = extractSize(entry, boxProp, "inlineSize");
-      const newHeight = extractSize(entry, boxProp, "blockSize");
+        const newWidth = extractSize(entry, boxProp, "inlineSize");
+        const newHeight = extractSize(entry, boxProp, "blockSize");
 
-      const hasChanged =
-        previousSize.current.width !== newWidth ||
-        previousSize.current.height !== newHeight;
+        const hasChanged =
+          previousSize.current.width !== newWidth ||
+          previousSize.current.height !== newHeight;
 
-      if (hasChanged) {
-        const newSize = { width: newWidth, height: newHeight };
-        previousSize.current.width = newWidth;
-        previousSize.current.height = newHeight;
+        if (hasChanged) {
+          const newSize = { width: newWidth, height: newHeight };
+          previousSize.current.width = newWidth;
+          previousSize.current.height = newHeight;
 
-        if (onResize.current) {
-          onResize.current(newSize);
-        } else {
-          if (isMounted()) {
-            setSize(newSize);
+          if (onResize.current) {
+            onResize.current(newSize);
+          } else {
+            if (isMounted()) {
+              setSize(newSize);
+            }
           }
         }
-      }
-    });
+      });
 
-    console.log(ref.current)
-    observer.observe(ref.current, { box });
+      observer.observe(ref.current, { box });
+
+      return () => {
+        observer.disconnect();
+      };
+    }, 100);
 
     return () => {
-      observer.disconnect();
+      clearTimeout(timeout);
     };
   }, [box, ref, isMounted]);
 

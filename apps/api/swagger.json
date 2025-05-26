@@ -132,7 +132,7 @@
     },
     "/web": {
       "get": {
-        "operationId": "FrontendController_index",
+        "operationId": "WebController_serveApp",
         "parameters": [],
         "responses": {
           "200": {
@@ -140,13 +140,13 @@
           }
         },
         "tags": [
-          "Frontend"
+          "Web"
         ]
       }
     },
-    "/web/about": {
+    "/web/home/jobs": {
       "get": {
-        "operationId": "FrontendController_about",
+        "operationId": "WebController_homeJobs",
         "parameters": [],
         "responses": {
           "200": {
@@ -154,13 +154,13 @@
           }
         },
         "tags": [
-          "Frontend"
+          "Web"
         ]
       }
     },
-    "/web/api/users": {
+    "/web/dashboards/sales": {
       "get": {
-        "operationId": "FrontendController_api",
+        "operationId": "WebController_dashboardsSales",
         "parameters": [],
         "responses": {
           "200": {
@@ -168,7 +168,7 @@
           }
         },
         "tags": [
-          "Frontend"
+          "Web"
         ]
       }
     }

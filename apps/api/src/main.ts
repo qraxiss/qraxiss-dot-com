@@ -4,7 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { writeFileSync } from 'fs';
 import { ConstantService } from 'src/constant/constant.service';
-import { configureFrontEnd, initializeFrontEnd } from './frontend/frontend.module';
+import { configureFrontEnd, initializeFrontEnd } from './web/web.module'
 import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
 
 

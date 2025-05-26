@@ -1,11 +1,23 @@
-import { Controller, Get, Res } from '@nestjs/common';
-import { Response } from 'express';
-import { join } from 'path';
+import { Controller, Get } from '@nestjs/common';
+import { Page } from './page';
+import { Res } from '@nestjs/common';
 
-@Controller('test')
+@Controller('web')
 export class WebController {
-    // @Get('*')
-    // serveApp(@Res() res: Response) {
-    //     res.sendFile(join(process.cwd(), '../web/dist'));
-    // }
+    constructor() { }
+    @Get()
+    serveApp(@Res() res: Response) {
+        return new Page();
+    }
+
+
+    @Get("/home/jobs")
+    homeJobs(@Res() res: Response) {
+        return new Page();
+    }
+
+    @Get("/dashboards/sales")
+    dashboardsSales() {
+        return new Page();
+    }
 }
