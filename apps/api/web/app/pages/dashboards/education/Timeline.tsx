@@ -8,7 +8,7 @@ import {
   Transition,
 } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import clsx from "clsx";
 import { ApexOptions } from "apexcharts";
 
@@ -102,6 +102,9 @@ export function Timeline() {
 
     return () => removeStylesFromHead(sheet);
   }, []);
+
+
+  const Chart = useApexCharts()
 
   return (
     <Card className="col-span-12 pb-3 lg:col-span-6">

@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 

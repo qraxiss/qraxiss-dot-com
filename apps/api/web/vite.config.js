@@ -18,6 +18,12 @@ export default defineConfig({
     },
   },
   base: "/web",
-  root: "./web"
+  root: "./web",
+  ssr: {
+    noExternal: ['react-syntax-highlighter'],
+  },
+  optimizeDeps: {
+    include: ['react-syntax-highlighter']
+  }
 });
 

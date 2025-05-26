@@ -6,9 +6,10 @@ import { TextEditor, Quill } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
-Quill.register("modules/magicUrl", MagicUrl);
 
 const ExternalModule = () => {
+  Quill.register("modules/magicUrl", MagicUrl);
+
   return (
     <div className="max-w-xl">
       <TextEditor

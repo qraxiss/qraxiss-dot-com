@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -61,6 +61,9 @@ export function DailyVisits() {
       data: [0, 20, 10, 30, 20, 50],
     },
   ];
+
+  const Chart = useApexCharts()
+
 
   return (
     <Card className="overflow-hidden">

@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -58,6 +58,9 @@ export function Radar() {
       categories: ["2011", "2012", "2013", "2014", "2015", "2016"],
     },
   };
+
+
+  const Chart = useApexCharts()
 
   return (
     <div className="max-w-lg">

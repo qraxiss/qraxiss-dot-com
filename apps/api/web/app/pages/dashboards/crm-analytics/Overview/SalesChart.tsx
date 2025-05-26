@@ -1,6 +1,7 @@
 // Import Dependencies
-import Chart, { Props } from "react-apexcharts";
+import { Props } from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -80,6 +81,9 @@ export function SalesChart({
   categories: string[] | number[];
   series: Props["series"];
 }) {
+  const Chart = useApexCharts();
+
+
   const chartOptions = JSON.parse(JSON.stringify(chartConfig));
   chartOptions.xaxis.categories = categories;
   return (

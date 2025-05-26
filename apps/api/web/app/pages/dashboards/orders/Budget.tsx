@@ -8,7 +8,7 @@ import {
 } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { Fragment } from "react";
 import { ApexOptions } from "apexcharts";
 
@@ -88,6 +88,9 @@ const chartConfig: ApexOptions = {
 };
 
 export function Budget() {
+  const Chart = useApexCharts()
+
+
   return (
     <Card className="col-span-2 px-4 pb-5 sm:px-5">
       <div className="flex min-w-0 items-center justify-between py-3">

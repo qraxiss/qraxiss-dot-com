@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 
@@ -61,6 +61,9 @@ const chartConfig: ApexOptions = {
 };
 
 export function CurrentBalance() {
+
+  const Chart = useApexCharts()
+
   return (
     <Box className="from-primary-600 to-primary-500 relative flex flex-col rounded-lg bg-linear-to-br px-5 pb-5">
       <div className="ax-transparent-gridline mt-5 w-1/2">

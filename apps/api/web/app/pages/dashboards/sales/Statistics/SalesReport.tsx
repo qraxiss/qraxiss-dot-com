@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import {
   Menu,
   MenuButton,
@@ -158,6 +158,9 @@ export function SalesReport() {
   const [activeRange, setActiveRange] = useState<DataRanges>("monthly");
   const chartOptions = JSON.parse(JSON.stringify(chartConfig));
   chartOptions.xaxis.categories = data[activeRange].categories;
+
+  const Chart = useApexCharts()
+
 
   return (
     <Card className="col-span-12 sm:col-span-6 lg:col-span-7 xl:col-span-8">

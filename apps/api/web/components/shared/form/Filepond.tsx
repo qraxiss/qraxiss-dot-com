@@ -19,16 +19,7 @@ import {
 
 // ----------------------------------------------------------------------
 
-registerPlugin(FilePondPluginImagePreview);
 
-const styles = `@layer vendor {
-  ${filepondCSS} ${filepondImagePreviewCSS}
-}`;
-
-const sheet = makeStyleTag();
-
-injectStyles(sheet, styles);
-insertStylesToHead(sheet);
 
 interface FilePondPropsExtended extends FilePondProps {
   className?: string;
@@ -55,6 +46,17 @@ const FilePond = forwardRef<BaseFilePond, FilePondPropsExtended>(
     },
     ref,
   ) => {
+
+    registerPlugin(FilePondPluginImagePreview);
+
+    const styles = `@layer vendor {
+  ${filepondCSS} ${filepondImagePreviewCSS}
+}`;
+
+    const sheet = makeStyleTag();
+
+    injectStyles(sheet, styles);
+    insertStylesToHead(sheet);
     return (
       <div
         className={clsx(

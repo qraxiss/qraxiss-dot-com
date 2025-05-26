@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -54,6 +54,8 @@ export function Column() {
       data: [11, 17, 15, 15, 21, 14, 15, 13],
     },
   ];
+
+  const Chart = useApexCharts()
 
   return (
     <div className="max-w-lg">

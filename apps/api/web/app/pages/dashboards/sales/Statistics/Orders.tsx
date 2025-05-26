@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -70,6 +70,8 @@ const chartConfig: ApexOptions = {
 };
 
 export function Orders() {
+  const Chart = useApexCharts()
+
   return (
     <Card className="row-span-2 flex flex-col">
       <h2 className="min-w-0 px-4 pt-3 font-medium tracking-wide text-gray-800 dark:text-dark-100 sm:px-5">

@@ -1,4 +1,4 @@
-// Import Dependencies
+// TextEditorImproved.tsx
 import {
   forwardRef,
   useEffect,
@@ -6,11 +6,10 @@ import {
   useLayoutEffect,
   useRef,
   ReactNode,
+  useState,
 } from "react";
 import clsx from "clsx";
-import Quill from "quill";
 import type { Delta as DeltaStatic } from "quill";
-import quillCSS from "quill/dist/quill.snow.css?inline";
 
 // Local Imports
 import { InputErrorMsg } from "@/components/ui";
@@ -21,18 +20,11 @@ import {
   makeStyleTag,
 } from "@/utils/dom/injectStylesToHead";
 
-// ----------------------------------------------------------------------
+// Dynamic imports - only load on client side
+let Quill: any = null;
+let Delta: any = null;
+let quillCSS: string = "";
 
-const styles = `@layer vendor {
-  ${quillCSS} 
-}`;
-
-const sheet = makeStyleTag();
-
-injectStyles(sheet, styles);
-insertStylesToHead(sheet);
-
-const Delta = Quill.import("delta");
 const DEFAULT_PLACEHOLDER = "Type here...";
 
 type RangeStatic = {
@@ -54,7 +46,7 @@ interface TextEditorProps {
     oldRange: RangeStatic | null,
     source: string,
   ) => void;
-  onChange?: (value: DeltaStatic, quill?: Quill) => void;
+  onChange?: (value: DeltaStatic, quill?: any) => void;
   placeholder?: string;
   modules?: Record<string, any>;
   className?: string;
@@ -68,11 +60,29 @@ interface TextEditorProps {
 }
 
 interface TextEditorRef {
-  getQuillInstance: () => Quill | null;
+  getQuillInstance: () => any | null;
   blur: () => void;
   focus: () => void;
   hasFocus: () => boolean;
 }
+
+// Loading skeleton component
+const EditorSkeleton = ({ label, className, classNames }: Partial<TextEditorProps>) => (
+  <div className={clsx("flex flex-col", className, classNames?.root)}>
+    {label && <label>{label}</label>}
+    <div className={clsx(
+      "border border-gray-300 rounded-md min-h-[200px] bg-gray-50 animate-pulse",
+      label && "mt-1.5",
+      classNames?.container
+    )}>
+      <div className="h-10 bg-white border-b border-gray-200 rounded-t-md"></div>
+      <div className="p-4">
+        <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+      </div>
+    </div>
+  </div>
+);
 
 const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
   (
@@ -92,19 +102,55 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
     },
     forwardedRef,
   ) => {
+    const [isClient, setIsClient] = useState(false);
+    const [isQuillLoaded, setIsQuillLoaded] = useState(false);
+
     const containerRef = useRef<HTMLDivElement>(null);
-    const quillRef = useRef<Quill | null>(null);
+    const quillRef = useRef<any | null>(null);
     const onTextChangeRef = useRef(onTextChange);
     const onSelectionChangeRef = useRef(onSelectionChange);
 
     const [_value, handleChange] = useUncontrolled<DeltaStatic>({
       value,
       defaultValue,
-      finalValue: new Delta(),
+      finalValue: isClient && Delta ? new Delta() : {},
       onChange,
     });
 
     const onChangeRef = useRef(handleChange);
+
+    // Check if we're on client side
+    useEffect(() => {
+      setIsClient(true);
+
+      // Load Quill dynamically
+      const loadQuill = async () => {
+        try {
+          const [quillModule, quillCSSModule] = await Promise.all([
+            import("quill"),
+            import("quill/dist/quill.snow.css?inline")
+          ]);
+
+          Quill = quillModule.default;
+          Delta = Quill.import("delta");
+          quillCSS = quillCSSModule.default;
+
+          // Inject styles
+          const styles = `@layer vendor {
+            ${quillCSS} 
+          }`;
+          const sheet = makeStyleTag();
+          injectStyles(sheet, styles);
+          insertStylesToHead(sheet);
+
+          setIsQuillLoaded(true);
+        } catch (error) {
+          console.error("Failed to load Quill:", error);
+        }
+      };
+
+      loadQuill();
+    }, []);
 
     useLayoutEffect(() => {
       onTextChangeRef.current = onTextChange;
@@ -113,6 +159,8 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
     }, [handleChange, onSelectionChange, onTextChange]);
 
     useEffect(() => {
+      if (!isQuillLoaded || !Quill) return;
+
       const container = containerRef.current;
       if (!container) return;
 
@@ -128,11 +176,13 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
 
       quill.enable(!readOnly);
 
-      quill.setContents(_value);
+      if (_value && typeof _value === 'object') {
+        quill.setContents(_value);
+      }
 
       quillRef.current = quill;
 
-      quill.on(Quill.events.TEXT_CHANGE, (...args) => {
+      quill.on(Quill.events.TEXT_CHANGE, (...args: any[]) => {
         const [delta, oldDelta, source] = args;
         if (source === "user") {
           const newContent = quill.getContents();
@@ -141,7 +191,7 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
         }
       });
 
-      quill.on(Quill.events.SELECTION_CHANGE, (...args) => {
+      quill.on(Quill.events.SELECTION_CHANGE, (...args: any[]) => {
         const [range, oldRange, source] = args;
         onSelectionChangeRef.current?.(range, oldRange, source);
       });
@@ -152,8 +202,7 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
         quillRef.current = null;
         container.innerHTML = "";
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [readOnly, modules, placeholder]);
+    }, [isQuillLoaded, readOnly, modules, placeholder, _value]);
 
     useImperativeHandle(forwardedRef, () => ({
       getQuillInstance: () => quillRef.current,
@@ -163,9 +212,8 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
     }));
 
     useEffect(() => {
-      if (quillRef.current && value !== undefined) {
+      if (quillRef.current && value !== undefined && Delta) {
         const currentContent = quillRef.current.getContents();
-
         const diff = currentContent.diff(value);
 
         if (diff && diff?.ops?.length > 0) {
@@ -173,6 +221,11 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
         }
       }
     }, [value]);
+
+    // Show skeleton during SSR or while loading
+    if (!isClient || !isQuillLoaded) {
+      return <EditorSkeleton label={label} className={className} classNames={classNames} />;
+    }
 
     return (
       <div

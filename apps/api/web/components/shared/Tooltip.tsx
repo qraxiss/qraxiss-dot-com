@@ -1,5 +1,5 @@
 // Import Dependencies
-import { Tooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 // Local Import
 import {
@@ -28,9 +28,14 @@ const css = `
   --rt-color-dark: var(--color-dark-500) !important;
 }`;
 
-const sheet = makeStyleTag();
 
-injectStyles(sheet, css);
-insertStylesToHead(sheet);
 
-export { Tooltip };
+export function Tooltip() {
+  const sheet = makeStyleTag();
+
+  injectStyles(sheet, css);
+  insertStylesToHead(sheet);
+
+  return <ReactTooltip></ReactTooltip>
+}
+

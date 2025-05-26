@@ -7,7 +7,7 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -72,6 +72,9 @@ export function SellerCard({
   impression,
   chartData,
 }: Seller) {
+
+  const Chart = useApexCharts()
+
   return (
     <Box className="dark:bg-surface-3 w-56 shrink-0 rounded-xl bg-gray-50 p-4">
       <div className="flex flex-col items-center space-y-3 text-center">

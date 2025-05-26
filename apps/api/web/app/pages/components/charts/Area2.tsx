@@ -1,7 +1,7 @@
 // Import Dependencies
 // Local Imports
 import { useThemeContext } from "@/app/contexts/theme/context";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // ----------------------------------------------------------------------
@@ -52,7 +52,7 @@ const options: ApexOptions = {
 };
 
 export function Area2() {
-  const { component: Chart } = useApexCharts();
+  const Chart = useApexCharts();
 
   const { primaryColorScheme } = useThemeContext();
 

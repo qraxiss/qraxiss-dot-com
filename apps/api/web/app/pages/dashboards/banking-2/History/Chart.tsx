@@ -1,6 +1,6 @@
 // Import Dependencies
-import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -88,6 +88,9 @@ const chartConfig: ApexOptions = {
 };
 
 export function Chart() {
+  const ReactApexChart = useApexCharts();
+
+
   return (
     <div className="col-span-12 sm:order-last sm:col-span-6 sm:mt-2 xl:col-span-7">
       <div className="ax-transparent-gridline">

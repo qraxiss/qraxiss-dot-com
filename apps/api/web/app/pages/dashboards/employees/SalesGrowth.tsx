@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import {
   Menu,
   MenuButton,
@@ -70,6 +70,10 @@ const series = [
 ];
 
 export function SalesGrowth() {
+  const Chart = useApexCharts()
+
+
+
   return (
     <Card className="flex flex-col">
       <div className="my-2 flex min-w-0 items-center justify-between px-4">

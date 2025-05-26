@@ -70,6 +70,8 @@ export function Bar() {
     },
   };
 
+  const Chart = useApexCharts();
+
   return (
     <div className="max-w-lg">
       <Chart series={series} type="bar" height="350" options={chartOptions} />

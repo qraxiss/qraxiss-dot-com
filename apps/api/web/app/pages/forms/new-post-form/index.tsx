@@ -4,6 +4,7 @@ import { Controller, Resolver, useForm } from "react-hook-form";
 import { DocumentPlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
 import type { Delta as DeltaType } from "quill";
+import { useEffect, useState } from "react";
 
 // Local Imports
 import { schema, type SchemaType } from "./schema";
@@ -19,10 +20,18 @@ import { Combobox } from "@/components/shared/form/StyledCombobox";
 
 // ----------------------------------------------------------------------
 
-const initialState = {
+// SSR-safe Delta initialization
+const createDelta = () => {
+  if (typeof window === 'undefined') {
+    return null; // SSR'da null döndür
+  }
+  return new Delta(); // Client-side'da Delta oluştur
+};
+
+const getInitialState = () => ({
   title: "",
   caption: "",
-  content: new Delta(),
+  content: createDelta(),
   cover: "",
   category_id: "",
   author_id: "",
@@ -33,7 +42,7 @@ const initialState = {
     description: "",
     keywords: [],
   },
-};
+});
 
 const editorModules = {
   toolbar: [
@@ -82,16 +91,26 @@ const people = [
 ];
 
 const NewPostFrom = () => {
+  const [isClient, setIsClient] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
     reset,
+    setValue,
   } = useForm<SchemaType>({
     resolver: yupResolver(schema) as Resolver<SchemaType>,
-    defaultValues: initialState as unknown as SchemaType,
+    defaultValues: getInitialState() as unknown as SchemaType,
   });
+
+  // Client-side hydration sonrası Delta'yı initialize et
+  useEffect(() => {
+    setIsClient(true);
+    // Eğer content null ise (SSR'dan geliyorsa) yeni Delta oluştur
+    setValue('content', new Delta() as any);
+  }, [setValue]);
 
   const onSubmit = (data: any) => {
     console.log(data);
@@ -158,7 +177,7 @@ const NewPostFrom = () => {
                       name="content"
                       render={({ field: { value, onChange, ...rest } }) => (
                         <TextEditor
-                          value={value as DeltaType}
+                          value={(isClient && value) ? value as DeltaType : new Delta()}
                           onChange={(val) => onChange(val)}
                           placeholder="Enter your content..."
                           className="mt-1.5 [&_.ql-editor]:max-h-80 [&_.ql-editor]:min-h-[12rem]"

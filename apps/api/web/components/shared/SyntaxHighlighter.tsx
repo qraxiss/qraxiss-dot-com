@@ -1,16 +1,36 @@
-// Import Dependencies
-import { PrismLight, SyntaxHighlighterProps as PrismProps } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import { useState, useEffect } from 'react';
 
-// Register the JSX language for syntax highlighting
-PrismLight.registerLanguage('jsx', jsx);
+interface SyntaxHighlighterProps {
+  children: string;
+  language?: string;
+  [key: string]: any;
+}
 
-// ----------------------------------------------------------------------
+function SyntaxHighlighter({ children, language = 'jsx', ...rest }: SyntaxHighlighterProps) {
+  const [PrismLight, setPrismLight] = useState<any>(null);
+  const [atomDark, setAtomDark] = useState<any>(null);
 
-function SyntaxHighlighter({ children, ...rest }: PrismProps) {
+  useEffect(() => {
+    const loadHighlighter = async () => {
+      const { PrismLight: PrismLightComponent } = await import('react-syntax-highlighter');
+      const { atomDark: atomDarkStyle } = await import('react-syntax-highlighter/dist/cjs/styles/prism');
+      const jsx = await import('react-syntax-highlighter/dist/cjs/languages/prism/jsx');
+
+      PrismLightComponent.registerLanguage('jsx', jsx.default);
+
+      setPrismLight(() => PrismLightComponent);
+      setAtomDark(atomDarkStyle);
+    };
+
+    loadHighlighter();
+  }, []);
+
+  if (!PrismLight || !atomDark) {
+    return <pre>{children}</pre>; // Fallback
+  }
+
   return (
-    <PrismLight style={atomDark} {...rest}>
+    <PrismLight style={atomDark} language={language} {...rest}>
       {children}
     </PrismLight>
   );

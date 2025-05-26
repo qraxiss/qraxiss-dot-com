@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 
@@ -53,6 +53,9 @@ export function AuthorCard({
     Icon: socialIcons[label as keyof typeof socialIcons],
     link,
   }));
+
+  const Chart = useApexCharts()
+
 
   return (
     <Card className="flex flex-col">

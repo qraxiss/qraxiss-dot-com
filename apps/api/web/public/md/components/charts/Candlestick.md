@@ -1,6 +1,6 @@
 ```jsx
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import dayjs from "dayjs";
 
 // ----------------------------------------------------------------------

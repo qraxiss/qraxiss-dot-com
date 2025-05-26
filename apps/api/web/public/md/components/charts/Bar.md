@@ -1,6 +1,6 @@
 ```jsx
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 // Local Imports
 import { useThemeContext } from "app/contexts/theme/context";

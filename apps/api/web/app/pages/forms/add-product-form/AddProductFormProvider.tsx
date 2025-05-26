@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useReducer } from "react";
+import { useReducer, useEffect, useState } from "react";
 
 // Local Imports
 import {
@@ -11,8 +11,16 @@ import { Delta } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
-// Using FormState instead of local InitialState
-const initialState: FormState = {
+// Lazy initialization function for Delta (SSR-safe)
+const createDelta = () => {
+  if (typeof window === 'undefined') {
+    return null; // SSR'da null döndür
+  }
+  return new Delta(); // Client-side'da Delta oluştur
+};
+
+// SSR-safe initial state
+const getInitialState = (): FormState => ({
   formData: {
     general: {
       title: "",
@@ -25,7 +33,7 @@ const initialState: FormState = {
     },
     description: {
       short_description: "",
-      description: new Delta(),
+      description: createDelta(),
       meta_title: "",
       meta_description: "",
       meta_keywords: [],
@@ -46,7 +54,7 @@ const initialState: FormState = {
       isDone: false,
     },
   },
-};
+});
 
 const reducerHandlers = {
   SET_FORM_DATA: (state: FormState, action: FormAction) => {
@@ -69,6 +77,19 @@ const reducerHandlers = {
       },
     };
   },
+  HYDRATE_DELTA: (state: FormState, action: FormAction) => {
+    if (action.type !== "HYDRATE_DELTA") return state;
+    return {
+      ...state,
+      formData: {
+        ...state.formData,
+        description: {
+          ...state.formData.description,
+          description: new Delta(),
+        },
+      },
+    };
+  },
 };
 
 const reducer = (state: FormState, action: FormAction): FormState =>
@@ -79,8 +100,17 @@ export function AddProductFormProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, getInitialState);
+
+  // Client-side hydration sonrası Delta'yı oluştur
+  useEffect(() => {
+    if (state.formData.description.description === null) {
+      dispatch({ type: "HYDRATE_DELTA" });
+    }
+  }, [state.formData.description.description]);
+
   const value = { state, dispatch };
+
   return (
     <AddProductFormContextProvider value={value}>
       {children}

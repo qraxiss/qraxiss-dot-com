@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import {
   ArrowTrendingDownIcon,
   ArrowTrendingUpIcon,
@@ -121,6 +121,8 @@ function DollarCoin(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function Statistics() {
+  const Chart = useApexCharts()
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6">
       <Box className="relative flex flex-col rounded-lg bg-linear-to-r from-blue-500 to-indigo-600 px-5 pb-5">

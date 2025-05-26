@@ -1,7 +1,7 @@
 // Import Dependencies
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -66,6 +66,9 @@ export function WalletCard({
   color,
   chartData,
 }: Wallet) {
+
+  const Chart = useApexCharts()
+
   return (
     <Box className="flex w-72 shrink-0 flex-col">
       <div className="flex items-center gap-2">

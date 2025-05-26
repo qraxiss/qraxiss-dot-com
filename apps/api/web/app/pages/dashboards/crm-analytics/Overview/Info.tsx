@@ -5,7 +5,7 @@ import {
   ArrowUpIcon,
   ChartPieIcon,
 } from "@heroicons/react/24/outline";
-import Chart, { Props } from "react-apexcharts";
+import { Props } from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -69,6 +69,9 @@ const chartConfig: ApexOptions = {
 };
 
 export function Info() {
+  const Chart = useApexCharts();
+
+
   return (
     <div className="mt-4 flex shrink-0 flex-col items-center sm:items-start">
       <ChartPieIcon className="this:info text-this dark:text-this-lighter size-8" />

@@ -1,5 +1,5 @@
 import { ApexOptions } from "apexcharts";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 const series = [
   {
@@ -102,6 +102,10 @@ const chartConfig: ApexOptions = {
 };
 
 export function ViewChart() {
+
+  const Chart = useApexCharts()
+
+
   return (
     <div className="ax-transparent-gridline col-span-12 px-2 sm:col-span-6 lg:col-span-8">
       <Chart options={chartConfig} series={series} type="bar" height={280} />

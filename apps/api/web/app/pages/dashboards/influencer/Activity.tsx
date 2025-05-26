@@ -9,7 +9,7 @@ import {
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { Fragment } from "react";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -92,6 +92,10 @@ const series = [
 ];
 
 export function Activity() {
+
+  const Chart = useApexCharts()
+
+
   return (
     <div>
       <div className="flex h-8 min-w-0 items-center justify-between">

@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ArrowTrendingDownIcon } from "@heroicons/react/24/outline";
 import { ApexOptions } from "apexcharts";
 
@@ -71,7 +71,11 @@ const series = [
   },
 ];
 
+
+
 export function Members() {
+  const Chart = useApexCharts()
+
   return (
     <Card className="overflow-hidden">
       <div className="mt-3.5 flex grow items-baseline justify-between px-4 sm:px-5">

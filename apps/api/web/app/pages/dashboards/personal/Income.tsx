@@ -9,7 +9,7 @@ import {
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { Fragment } from "react";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -76,6 +76,9 @@ const chartConfig: ApexOptions = {
 };
 
 export function Income() {
+
+  const Chart = useApexCharts()
+
   return (
     <Card className="overflow-hidden">
       <div className="flex items-center justify-between px-4 pt-3 sm:px-5">

@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +46,9 @@ export function PolarArea() {
     ...options,
     labels: ["Rose A", "Rose B", "Rose C", "Rose D", "Rose E"],
   };
+
+  const Chart = useApexCharts()
+
 
   return (
     <div className="max-w-lg">

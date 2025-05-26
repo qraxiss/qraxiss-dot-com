@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import dayjs from "dayjs";
 import { ApexOptions } from "apexcharts";
 
@@ -153,6 +153,8 @@ export function Candlestick() {
       ],
     },
   ];
+
+  const Chart = useApexCharts()
 
   return (
     <div className="max-w-lg">

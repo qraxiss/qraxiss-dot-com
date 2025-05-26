@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useApexCharts } from "@/hooks/useApexCharts";
+import { useApexCharts } from "@/hooks";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports
@@ -52,6 +52,8 @@ const chartOptions: ApexOptions = {
 };
 
 export function CPUUsage() {
+  const Chart = useApexCharts()
+
   return (
     <Card className="card row-span-2 justify-between px-2 py-5 text-center">
       <p className="dark:text-dark-100 font-medium tracking-wide text-gray-800">
