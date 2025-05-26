@@ -24,3 +24,4 @@ export * from "./useStep";
 export * from "./useToggle";
 export * from "./useUncontrolled";
 export * from "./useUnmount";
+export * from "./useApexCharts"

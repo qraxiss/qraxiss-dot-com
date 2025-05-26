@@ -1,4 +1,3 @@
-const head: HTMLHeadElement = document.head || document.getElementsByTagName("head")[0];
 
 /**
  * Inserts a style element into the document head.
@@ -6,6 +5,8 @@ const head: HTMLHeadElement = document.head || document.getElementsByTagName("he
  * @param tag - The HTMLStyleElement to insert.
  */
 export function insertStylesToHead(tag: HTMLStyleElement): void {
+  const head: HTMLHeadElement = document.head || document.getElementsByTagName("head")[0];
+
   head.appendChild(tag);
 }
 
@@ -15,6 +16,8 @@ export function insertStylesToHead(tag: HTMLStyleElement): void {
  * @param tag - The HTMLStyleElement to remove.
  */
 export function removeStylesFromHead(tag: HTMLStyleElement): void {
+  const head: HTMLHeadElement = document.head || document.getElementsByTagName("head")[0];
+
   head.removeChild(tag);
 }
 

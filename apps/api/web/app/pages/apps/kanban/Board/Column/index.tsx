@@ -30,7 +30,6 @@ import type { Column as ColumnType, Task as TaskType } from "../../data";
 
 // ----------------------------------------------------------------------
 
-const isSafari = getUserAgentBrowser() === "Safari";
 
 // State Types
 type IdleState = { type: "idle" };
@@ -58,6 +57,8 @@ interface ColumnProps {
 }
 
 export function Column({ data, tasks }: ColumnProps) {
+  const isSafari = getUserAgentBrowser() === "Safari";
+
   const { id, color, Icon, name } = data;
   const [colDraggableState, setColDraggableState] =
     useState<ColDraggableState>(idle);
@@ -196,7 +197,7 @@ export function Column({ data, tasks }: ColumnProps) {
       className={clsx(
         "relative -mx-0.5 flex h-full shrink-0 flex-col rounded-lg px-0.5 ring-inset",
         cardDraggableState.type === "dragging" &&
-          "dark:bg-surface-3 bg-gray-100",
+        "dark:bg-surface-3 bg-gray-100",
       )}
     >
       <div
@@ -270,11 +271,11 @@ export function Column({ data, tasks }: ColumnProps) {
         )}
       {colDraggableState.type === "preview-safari-column"
         ? createPortal(
-            <Box className="dark:bg-dark-800 h-5 max-w-sm rounded-sm bg-gray-200 px-1 py-0.5 text-black dark:text-white">
-              {name}
-            </Box>,
-            colDraggableState.container,
-          )
+          <Box className="dark:bg-dark-800 h-5 max-w-sm rounded-sm bg-gray-200 px-1 py-0.5 text-black dark:text-white">
+            {name}
+          </Box>,
+          colDraggableState.container,
+        )
         : null}
     </div>
   );

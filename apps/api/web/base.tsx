@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import routes from './routes.js';
 
 type Config = {
     url: string;
@@ -9,7 +10,11 @@ type Config = {
 };
 
 export const createApp = ({ url, props }: Config) => {
+    const route = routes.find((route) => route.match(url));
+    const Component = route
+
     return {
-        component: <></>,
+        metadata: route?.metadata(props),
+        component: <Component {...props} />,
     };
 };

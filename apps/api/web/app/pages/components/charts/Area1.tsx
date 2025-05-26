@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import Chart from "react-apexcharts";
+import { useState, useEffect } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -58,6 +58,14 @@ export function Area1() {
       categories,
     },
   };
+
+  const [Chart, setChart] = useState<any>();
+
+  useEffect(() => {
+    import("react-apexcharts").then((mod) => {
+      setChart(() => mod.default);
+    });
+  }, []);
 
   return (
     <div className="max-w-lg">

@@ -27,9 +27,10 @@ import { getUserAgentBrowser } from "@/utils/dom/getUserAgentBrowser";
 
 // ----------------------------------------------------------------------
 
-const isSafari = getUserAgentBrowser() === "Safari";
 
 export function TeacherCoursesTable() {
+  const isSafari = getUserAgentBrowser() === "Safari";
+
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
   const theadRef = useRef<HTMLTableSectionElement>(null);
 
@@ -118,9 +119,9 @@ export function TeacherCoursesTable() {
                             {header.isPlaceholder
                               ? null
                               : flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext(),
-                                )}
+                                header.column.columnDef.header,
+                                header.getContext(),
+                              )}
                           </span>
                           <TableSortIcon sorted={header.column.getIsSorted()} />
                         </div>
@@ -143,8 +144,8 @@ export function TeacherCoursesTable() {
                     className={clsx(
                       "relative border-y border-transparent border-b-gray-200 dark:border-b-dark-500",
                       row.getIsSelected() &&
-                        !isSafari &&
-                        "row-selected after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500",
+                      !isSafari &&
+                      "row-selected after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500",
                     )}
                   >
                     {row.getVisibleCells().map((cell) => {

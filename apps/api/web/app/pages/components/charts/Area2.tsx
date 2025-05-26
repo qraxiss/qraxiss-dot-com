@@ -1,8 +1,7 @@
 // Import Dependencies
-import Chart from "react-apexcharts";
-
 // Local Imports
 import { useThemeContext } from "@/app/contexts/theme/context";
+import { useApexCharts } from "@/hooks/useApexCharts";
 import { ApexOptions } from "apexcharts";
 
 // ----------------------------------------------------------------------
@@ -53,6 +52,8 @@ const options: ApexOptions = {
 };
 
 export function Area2() {
+  const { component: Chart } = useApexCharts();
+
   const { primaryColorScheme } = useThemeContext();
 
   const series = [

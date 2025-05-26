@@ -47,9 +47,9 @@ import { TableSettings } from "@/components/shared/table/TableSettings";
 
 // ----------------------------------------------------------------------
 
-const isSafari = getUserAgentBrowser() === "Safari";
-
 export default function OrdersDatatableV2() {
+  const isSafari = getUserAgentBrowser() === "Safari";
+
   const { cardSkin } = useThemeContext();
 
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
@@ -227,7 +227,7 @@ export default function OrdersDatatableV2() {
         className={clsx(
           "flex flex-col pt-4",
           tableSettings.enableFullScreen &&
-            "dark:bg-dark-900 fixed inset-0 z-61 h-full w-full bg-white pt-3",
+          "dark:bg-dark-900 fixed inset-0 z-61 h-full w-full bg-white pt-3",
         )}
       >
         <Toolbar table={table} />
@@ -255,9 +255,9 @@ export default function OrdersDatatableV2() {
                           "dark:bg-dark-800 dark:text-dark-100 bg-gray-200 font-semibold text-gray-800 uppercase first:ltr:rounded-tl-lg last:ltr:rounded-tr-lg first:rtl:rounded-tr-lg last:rtl:rounded-tl-lg",
                           header.column.getCanPin() && [
                             header.column.getIsPinned() === "left" &&
-                              "sticky z-2 ltr:left-0 rtl:right-0",
+                            "sticky z-2 ltr:left-0 rtl:right-0",
                             header.column.getIsPinned() === "right" &&
-                              "sticky z-2 ltr:right-0 rtl:left-0",
+                            "sticky z-2 ltr:right-0 rtl:left-0",
                           ],
                         )}
                       >
@@ -270,9 +270,9 @@ export default function OrdersDatatableV2() {
                               {header.isPlaceholder
                                 ? null
                                 : flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext(),
-                                  )}
+                                  header.column.columnDef.header,
+                                  header.getContext(),
+                                )}
                             </span>
                             <TableSortIcon
                               sorted={header.column.getIsSorted()}
@@ -301,8 +301,8 @@ export default function OrdersDatatableV2() {
                           "dark:border-b-dark-500 relative border-y border-transparent border-b-gray-200",
                           row.getIsExpanded() && "border-dashed",
                           row.getIsSelected() &&
-                            !isSafari &&
-                            "row-selected after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500 after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent",
+                          !isSafari &&
+                          "row-selected after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500 after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent",
                         )}
                       >
                         {/* first row is a normal row */}
@@ -318,9 +318,9 @@ export default function OrdersDatatableV2() {
 
                                 cell.column.getCanPin() && [
                                   cell.column.getIsPinned() === "left" &&
-                                    "sticky z-2 ltr:left-0 rtl:right-0",
+                                  "sticky z-2 ltr:left-0 rtl:right-0",
                                   cell.column.getIsPinned() === "right" &&
-                                    "sticky z-2 ltr:right-0 rtl:left-0",
+                                  "sticky z-2 ltr:right-0 rtl:left-0",
                                 ],
                               )}
                             >

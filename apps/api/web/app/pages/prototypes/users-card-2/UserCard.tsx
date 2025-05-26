@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { ChatBubbleLeftIcon } from "@heroicons/react/24/solid";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 
 // Local Imports
 import { Highlight } from "@/components/shared/Highlight";

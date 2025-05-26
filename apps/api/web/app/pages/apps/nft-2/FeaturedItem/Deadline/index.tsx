@@ -1,6 +1,6 @@
 // Import Dependencies
-import { useTimer } from "react-timer-hook";
-
+import * as TimerHook from 'react-timer-hook';
+const { useTimer } = TimerHook;
 // Local Imports
 import { Digit } from "./Digit";
 

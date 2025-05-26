@@ -1,7 +1,7 @@
 // Import Dependencies
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 import { ApexOptions } from "apexcharts";
 
 // Local Imports

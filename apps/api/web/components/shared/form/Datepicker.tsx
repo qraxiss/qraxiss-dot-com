@@ -24,10 +24,10 @@ import { Flatpickr, FlatpickrProps, FlatpickrRef } from "./Flatpickr";
 // Define prop types for the DatePicker component
 interface DatePickerProps
   extends Omit<FlatpickrProps, "options">,
-    Omit<
-      InputProps<"input">,
-      "defaultValue" | "value" | "onChange" | "prefix" | "type"
-    > {
+  Omit<
+    InputProps<"input">,
+    "defaultValue" | "value" | "onChange" | "prefix" | "type"
+  > {
   options?: Partial<BaseOptions>;
   isCalendar?: boolean;
   hasCalenderIcon?: boolean;
@@ -37,10 +37,7 @@ const styles = `@layer vendor {
   ${flatpickrCSS}
 }`;
 
-const sheet = makeStyleTag();
 
-injectStyles(sheet, styles);
-insertStylesToHead(sheet);
 
 const DatePicker = forwardRef<FlatpickrRef, DatePickerProps>(
   (
@@ -53,6 +50,11 @@ const DatePicker = forwardRef<FlatpickrRef, DatePickerProps>(
     },
     ref,
   ) => {
+    const sheet = makeStyleTag();
+
+    injectStyles(sheet, styles);
+    insertStylesToHead(sheet);
+
     const flatpickrRef = useRef<FlatpickrRef | null>(null);
     const { locale } = useLocaleContext();
     const [localeData, setLocaleData] = useState<any>(null);

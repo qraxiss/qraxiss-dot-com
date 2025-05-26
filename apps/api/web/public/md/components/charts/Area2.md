@@ -1,6 +1,6 @@
 ```jsx
 // Import Dependencies
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 
 // Local Imports
 import { useThemeContext } from "app/contexts/theme/context";

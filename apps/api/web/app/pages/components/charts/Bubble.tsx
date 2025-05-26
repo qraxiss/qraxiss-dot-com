@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ApexOptions } from "apexcharts";
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 
 // ----------------------------------------------------------------------
 
@@ -83,6 +83,7 @@ export function Bubble() {
       ],
     },
   ];
+  const Chart = useApexCharts()
 
   return (
     <div className="max-w-xl">

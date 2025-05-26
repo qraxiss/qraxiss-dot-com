@@ -27,9 +27,10 @@ import { getUserAgentBrowser } from "@/utils/dom/getUserAgentBrowser";
 
 // ----------------------------------------------------------------------
 
-const isSafari = getUserAgentBrowser() === "Safari";
 
 export function ProductsTable() {
+  const isSafari = getUserAgentBrowser() === "Safari";
+
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
 
   const theadRef = useRef<HTMLTableSectionElement>(null);
@@ -118,9 +119,9 @@ export function ProductsTable() {
                             {header.isPlaceholder
                               ? null
                               : flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext(),
-                                )}
+                                header.column.columnDef.header,
+                                header.getContext(),
+                              )}
                           </span>
                           <TableSortIcon sorted={header.column.getIsSorted()} />
                         </div>
@@ -143,8 +144,8 @@ export function ProductsTable() {
                     className={clsx(
                       "dark:border-b-dark-500 relative border-y border-transparent border-b-gray-200",
                       row.getIsSelected() &&
-                        !isSafari &&
-                        "row-selected after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500 after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent",
+                      !isSafari &&
+                      "row-selected after:bg-primary-500/10 ltr:after:border-l-primary-500 rtl:after:border-r-primary-500 after:pointer-events-none after:absolute after:inset-0 after:z-2 after:h-full after:w-full after:border-3 after:border-transparent",
                     )}
                   >
                     {row.getVisibleCells().map((cell) => {

@@ -1,5 +1,5 @@
 // Import Dependencies
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 import { ApexOptions } from "apexcharts";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 

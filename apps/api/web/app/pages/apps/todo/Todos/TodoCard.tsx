@@ -40,7 +40,6 @@ import { DraggableState } from "../types";
 const idleState = { type: "idle" };
 const draggingState = { type: "dragging" };
 
-const isSafari = getUserAgentBrowser() === "Safari";
 
 export function TodoCard({ todo, index }: { todo: Todo; index: number }) {
   const { locale } = useLocaleContext();
@@ -60,7 +59,7 @@ export function TodoCard({ todo, index }: { todo: Todo; index: number }) {
   useEffect(() => {
     const element = cardRef.current;
     const dragHandle = cardRef.current;
-    invariant(element); 
+    invariant(element);
     invariant(dragHandle);
 
     const data = getTodoData({ todo, index, instanceId });

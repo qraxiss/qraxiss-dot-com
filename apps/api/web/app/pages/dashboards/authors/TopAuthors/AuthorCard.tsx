@@ -1,5 +1,5 @@
 // Import Dependencies
-import Chart from "react-apexcharts";
+import { useApexCharts } from "@/hooks/useApexCharts";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 

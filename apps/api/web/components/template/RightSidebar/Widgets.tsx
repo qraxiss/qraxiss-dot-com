@@ -1,5 +1,4 @@
 // Import Dependencies
-import Chart from "react-apexcharts";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/20/solid";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { ApexOptions } from "apexcharts";
@@ -7,6 +6,7 @@ import { ApexOptions } from "apexcharts";
 // Local Imports
 import { Box, Button, Progress } from "@/components/ui";
 import { Delayed } from "@/components/shared/Delayed";
+import { useState, useEffect } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -139,6 +139,15 @@ export function Widgets() {
       data: [654, 820, 102, 540, 154, 614],
     },
   ];
+
+  const [Chart, setChart] = useState<any>();
+
+  useEffect(() => {
+    import("react-apexcharts").then((mod) => {
+      setChart(() => mod.default);
+    });
+  }, []);
+
 
   return (
     <>
