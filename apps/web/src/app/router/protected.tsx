@@ -1,6 +1,4 @@
 import { Navigate, RouteObject } from "react-router";
-
-import AuthGuard from "@/middleware/AuthGuard";
 import { DynamicLayout } from "../layouts/DynamicLayout";
 import { AppLayout } from "../layouts/AppLayout";
 import Listbox from "../pages/forms/listbox";
@@ -12,7 +10,7 @@ import Listbox from "../pages/forms/listbox";
  */
 const protectedRoutes: RouteObject = {
   id: "protected",
-  Component: AuthGuard,
+  // Component: AuthGuard,
   children: [
     // The dynamic layout supports both the main layout and the sideblock.
     {
@@ -20,7 +18,23 @@ const protectedRoutes: RouteObject = {
       children: [
         {
           index: true,
-          element: <Navigate to="/dashboards/sales" />,
+          element: <Navigate to="/home/jobs" />,
+        },
+        {
+          path: "/home",
+          children: [
+            {
+              index: true,
+              element: <Navigate to="/home/jobs" />
+            },
+            {
+              path: "jobs",
+              lazy: async () => ({
+                Component: (await import("@/app/pages/home/jobs"))
+                  .default
+              })
+            }
+          ]
         },
         {
           path: "/components",

@@ -7,7 +7,6 @@ import { SetStateAction, Dispatch } from "react";
 import Logo from "@/assets/appLogo.svg?react";
 import { Menu } from "./Menu";
 import { Item } from "./Menu/item";
-import { Profile } from "../../Profile";
 import { useThemeContext } from "@/app/contexts/theme/context";
 import { settings } from "@/app/navigation/segments/settings";
 import { NavigationTree } from "@/@types/navigation";
@@ -60,7 +59,7 @@ export function MainPanel({
             isActive={activeSegmentPath === settings.path}
             icon={settings.icon}
           />
-          <Profile />
+          {/* <Profile /> */}
         </div>
       </div>
     </div>
