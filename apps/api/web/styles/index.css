@@ -1,5 +1,3 @@
-/* @layer theme, base, vendor, components, utilities; */
-
 @import "./colors.css" layer(base);
 
 @import "./variants.css" layer(base);

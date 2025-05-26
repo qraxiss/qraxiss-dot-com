@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import path from "path";
+import path, { join } from "path";
 import tailwindcss from "@tailwindcss/vite";
 import { preact } from '@preact/preset-vite';
 // https://vite.dev/config/
@@ -14,9 +14,10 @@ export default defineConfig({
   }, preact(), svgr(), tailwindcss()],
   resolve: {
     alias: {
-      "@": "/Users/qraxiss/Documents/GitHub/qraxiss-dot-com/apps/api/web",
+      "@": join(process.cwd(), "/web"),
     },
   },
   base: "/web",
   root: "./web"
 });
+

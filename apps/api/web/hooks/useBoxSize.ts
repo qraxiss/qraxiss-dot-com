@@ -60,6 +60,7 @@ export function useBoxSize(options: UseBoxSizeOptions): BoxSize {
       }
     });
 
+    console.log(ref.current)
     observer.observe(ref.current, { box });
 
     return () => {

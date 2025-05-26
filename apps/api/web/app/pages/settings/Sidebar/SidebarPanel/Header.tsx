@@ -1,6 +1,6 @@
 // Import Dependencies
 import { ChevronLeftIcon } from "@heroicons/react/20/solid";
-import { useTranslation } from "../../../../../../node_modules/react-i18next";
+import { useTranslation } from "react-i18next";
 
 // Local Imports
 import { useSidebarContext } from "@/app/contexts/sidebar/context";

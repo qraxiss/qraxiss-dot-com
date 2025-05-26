@@ -1,6 +1,4 @@
 import { h } from 'preact';
-import App from './App';
-import Component from './Component';
 
 type Config = {
     url: string;
@@ -11,9 +9,7 @@ type Config = {
 };
 
 export const createApp = ({ url, props }: Config) => {
-    console.log(url, props)
-
     return {
-        component: <Component blabla='"' />,
+        component: <></>,
     };
 };

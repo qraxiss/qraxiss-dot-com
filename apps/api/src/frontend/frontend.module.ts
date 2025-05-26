@@ -93,7 +93,6 @@ export const configureFrontEnd = async (
                         props,
                     };
                     const hydration = `<script>window.__INITIAL_STATE__ = ${uneval(hydrationState)};</script>`
-                    console.log(hydration)
                     return {
                         element: template,
                         title: "test",
