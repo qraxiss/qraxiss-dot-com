@@ -4,13 +4,13 @@ import { join } from 'path';
 import { WebController } from './web.controller';
 
 @Module({
-  imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(process.cwd(), '../web/dist'),
-      exclude: ['/api*'],
-      serveRoot: '/web',
-    }),
-  ],
-  controllers: [WebController],
+  // imports: [
+  //   ServeStaticModule.forRoot({
+  //     rootPath: join(process.cwd(), '../web/dist'),
+  //     exclude: ['/api*'],
+  //     serveRoot: '/web',
+  //   }),
+  // ],
+  // controllers: [WebController],
 })
 export class WebModule { }

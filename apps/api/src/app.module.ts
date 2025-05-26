@@ -8,6 +8,7 @@ import { StatusModule } from './status/status.module';
 import { ConstantService } from './constant/constant.service';
 import { LogsModule } from './logs/logs.module';
 import { WebModule } from './web/web.module';
+import { FrontendModule } from './frontend/frontend.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -37,7 +38,8 @@ import { WebModule } from './web/web.module';
     ConstantModule,
     StatusModule,
     LogsModule,
-    WebModule
+    WebModule,
+    FrontendModule
   ],
   controllers: [],
   providers: [ConstantService],

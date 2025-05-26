@@ -4,9 +4,17 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { writeFileSync } from 'fs';
 import { ConstantService } from 'src/constant/constant.service';
+import { configureFrontEnd, initializeFrontEnd } from './frontend/frontend.module';
+import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
+
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    await configureFrontEnd(new FastifyAdapter()),
+  );
+  app.init()
+  await initializeFrontEnd(app);
   const constantService = app.get(ConstantService);
 
   app.useGlobalPipes(

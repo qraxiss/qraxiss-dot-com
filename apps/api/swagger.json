@@ -130,9 +130,9 @@
         ]
       }
     },
-    "/web/{path}": {
+    "/web": {
       "get": {
-        "operationId": "WebController_serveApp",
+        "operationId": "FrontendController_index",
         "parameters": [],
         "responses": {
           "200": {
@@ -140,7 +140,35 @@
           }
         },
         "tags": [
-          "Web"
+          "Frontend"
+        ]
+      }
+    },
+    "/web/about": {
+      "get": {
+        "operationId": "FrontendController_about",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Frontend"
+        ]
+      }
+    },
+    "/web/api/users": {
+      "get": {
+        "operationId": "FrontendController_api",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Frontend"
         ]
       }
     }
