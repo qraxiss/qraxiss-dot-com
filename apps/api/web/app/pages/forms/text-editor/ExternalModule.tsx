@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Local Imports
-import { TextEditor, Quill } from "@/components/shared/form/TextEditor";
+import { TextEditor } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
@@ -21,25 +21,17 @@ const ExternalModule = () => {
 
     const registerMagicUrl = async () => {
       try {
-        const MagicUrl = (await import("quill-magic-url")).default;
+        const [QuillModule, MagicUrl] = await Promise.all([
+          import("quill"),
+          import("quill-magic-url")
+        ]);
         
-        // Check if Quill is available (it's loaded dynamically in TextEditor)
-        if (Quill) {
-          Quill.register("modules/magicUrl", MagicUrl);
-          setIsModuleRegistered(true);
-        } else {
-          // If Quill is not yet loaded, wait a bit and try again
-          const checkInterval = setInterval(() => {
-            if (Quill) {
-              Quill.register("modules/magicUrl", MagicUrl);
-              setIsModuleRegistered(true);
-              clearInterval(checkInterval);
-            }
-          }, 100);
-
-          // Clean up interval after 5 seconds if Quill never loads
-          setTimeout(() => clearInterval(checkInterval), 5000);
-        }
+        const Quill = QuillModule.default;
+        const MagicUrlModule = MagicUrl.default;
+        
+        // Register the magic URL module
+        Quill.register("modules/magicUrl", MagicUrlModule);
+        setIsModuleRegistered(true);
       } catch (error) {
         console.error("Failed to load quill-magic-url:", error);
       }

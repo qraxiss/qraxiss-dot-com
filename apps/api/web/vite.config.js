@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
-import { join } from "path";
+import { fileURLToPath, URL } from 'node:url';
 import tailwindcss from "@tailwindcss/vite";
 import { preact } from '@preact/preset-vite';
 // https://vite.dev/config/
@@ -13,7 +13,7 @@ export default defineConfig({
   }, preact(), svgr(), tailwindcss()],
   resolve: {
     alias: {
-      "@": join(process.cwd(), "/web"),
+      "@": fileURLToPath(new URL('./', import.meta.url)),
     },
   },
   base: "/web",

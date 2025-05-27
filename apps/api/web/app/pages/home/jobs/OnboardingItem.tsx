@@ -33,7 +33,7 @@ export function OnboardingItem({
           className="mt-8"
           color="primary"
           component="a"
-          href={action}
+          href={typeof action === 'string' ? action : action?.pathname || '/'}
           isGlow
         >
           {actionLabel}
