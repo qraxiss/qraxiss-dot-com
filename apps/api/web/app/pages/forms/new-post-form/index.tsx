@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { schema, type SchemaType } from "./schema";
 import { Page } from "@/components/shared/Page";
 import { Button, Card, Input, Textarea } from "@/components/ui";
-import { Delta, TextEditor } from "@/components/shared/form/TextEditor";
+import { TextEditor } from "@/components/shared/form/TextEditor";
 import { CoverImageUpload } from "./components/CoverImageUpload";
 import { Tags } from "./components/Tags";
 import { ContextualHelp } from "@/components/shared/ContextualHelp";
@@ -21,11 +21,20 @@ import { Combobox } from "@/components/shared/form/StyledCombobox";
 // ----------------------------------------------------------------------
 
 // SSR-safe Delta initialization
-const createDelta = () => {
+const createDelta = (): any => {
   if (typeof window === 'undefined') {
-    return null; // SSR'da null döndür
+    return {}; // Return empty object for SSR
   }
-  return new Delta(); // Client-side'da Delta oluştur
+  
+  // Try to get Delta from Quill if it's loaded
+  try {
+    const Quill = require('quill');
+    const Delta = Quill.import('delta');
+    return new Delta();
+  } catch (e) {
+    // Quill not loaded yet, return empty object
+    return {};
+  }
 };
 
 const getInitialState = () => ({
@@ -100,16 +109,21 @@ const NewPostFrom = () => {
     control,
     reset,
     setValue,
+    watch,
   } = useForm<SchemaType>({
     resolver: yupResolver(schema) as Resolver<SchemaType>,
     defaultValues: getInitialState() as unknown as SchemaType,
   });
 
+  const content = watch('content');
+
   // Client-side hydration sonrası Delta'yı initialize et
   useEffect(() => {
     setIsClient(true);
-    // Eğer content null ise (SSR'dan geliyorsa) yeni Delta oluştur
-    setValue('content', new Delta() as any);
+    // Eğer content boş ise (SSR'dan geliyorsa) yeni Delta oluştur
+    if (!content || Object.keys(content).length === 0) {
+      setValue('content', createDelta() as any);
+    }
   }, [setValue]);
 
   const onSubmit = (data: any) => {
@@ -177,7 +191,7 @@ const NewPostFrom = () => {
                       name="content"
                       render={({ field: { value, onChange, ...rest } }) => (
                         <TextEditor
-                          value={(isClient && value) ? value as DeltaType : new Delta()}
+                          value={(isClient && value) ? value as DeltaType : createDelta()}
                           onChange={(val) => onChange(val)}
                           placeholder="Enter your content..."
                           className="mt-1.5 [&_.ql-editor]:max-h-80 [&_.ql-editor]:min-h-[12rem]"

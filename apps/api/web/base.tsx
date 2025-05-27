@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import routes from './routes.js';
 
 type Config = {
@@ -10,11 +9,22 @@ type Config = {
 };
 
 export const createApp = ({ url, props }: Config) => {
-    const route = routes.find((route) => route.match(url));
-    const Component = route
+    // Remove /web prefix if present for route matching
+    const normalizedUrl = url.startsWith('/web') ? url.slice(4) : url;
+    
+    const route = routes.find((route) => route.match(normalizedUrl));
+    
+    if (!route) {
+        return {
+            metadata: { title: 'Not Found' },
+            component: <div>Route not found for {normalizedUrl}</div>,
+        };
+    }
+    
+    const Component = route.component;
 
     return {
-        metadata: route?.metadata(props),
+        metadata: route.metadata(props),
         component: <Component {...props} />,
     };
 };

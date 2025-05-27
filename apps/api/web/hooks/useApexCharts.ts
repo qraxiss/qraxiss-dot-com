@@ -1,13 +1,29 @@
 import { useState, useEffect } from 'react';
 
+// Placeholder component for SSR
+const ChartPlaceholder = () => null;
+
 export function useApexCharts() {
-    const [Chart, setChart] = useState<any>(null);
+    const [Chart, setChart] = useState<any>(() => {
+        // Return placeholder during SSR
+        if (typeof window === 'undefined') {
+            return ChartPlaceholder;
+        }
+        return null;
+    });
 
     useEffect(() => {
-        import("react-apexcharts").then((mod) => {
-            setChart(mod.default);
-        });
-    }, []);
+        // Only import on client side
+        if (typeof window !== 'undefined' && !Chart) {
+            import("react-apexcharts").then((mod) => {
+                setChart(() => mod.default);
+            }).catch(err => {
+                console.error('Failed to load ApexCharts:', err);
+                setChart(() => ChartPlaceholder);
+            });
+        }
+    }, [Chart]);
 
-    return Chart;
+    // Always return a component (either the real Chart or placeholder)
+    return Chart || ChartPlaceholder;
 };

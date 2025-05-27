@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import path, { join } from "path";
+import { join } from "path";
 import tailwindcss from "@tailwindcss/vite";
 import { preact } from '@preact/preset-vite';
 // https://vite.dev/config/
@@ -21,9 +20,11 @@ export default defineConfig({
   root: "./web",
   ssr: {
     noExternal: ['react-syntax-highlighter'],
+    external: ['quill-magic-url', 'quill']
   },
   optimizeDeps: {
-    include: ['react-syntax-highlighter']
+    include: ['react-syntax-highlighter'],
+    exclude: ['quill-magic-url', 'quill']
   }
 });
 

@@ -1,5 +1,4 @@
 // Import Dependencies
-import { useReactToPrint } from "react-to-print";
 import { Cog8ToothIcon, PrinterIcon } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 
@@ -8,13 +7,19 @@ import { Page } from "@/components/shared/Page";
 import { Button, Card } from "@/components/ui";
 import { ItemsTable } from "./ItemsTable";
 
+// Lazy import for SSR compatibility
+let useReactToPrint: any;
+if (typeof window !== 'undefined') {
+  useReactToPrint = require('react-to-print').useReactToPrint;
+}
+
 // ----------------------------------------------------------------------
 
 export default function Invoice1() {
   const invoiceRef = useRef<HTMLDivElement>(null);
-  const handlePrint = useReactToPrint({
+  const handlePrint = useReactToPrint ? useReactToPrint({
     contentRef: invoiceRef,
-  });
+  }) : () => {};
 
   return (
     <Page title="Invoice V1">

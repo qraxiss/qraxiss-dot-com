@@ -1,5 +1,5 @@
 // Import Dependencies
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useEffect } from "react";
 
 // Local Imports
 import {
@@ -7,16 +7,24 @@ import {
   FormState,
   FormAction,
 } from "./AddProductFormContext";
-import { Delta } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
 // Lazy initialization function for Delta (SSR-safe)
-const createDelta = () => {
+const createDelta = (): any => {
   if (typeof window === 'undefined') {
-    return null; // SSR'da null döndür
+    return {}; // Return empty object for SSR
   }
-  return new Delta(); // Client-side'da Delta oluştur
+  
+  // Try to get Delta from Quill if it's loaded
+  try {
+    const Quill = require('quill');
+    const Delta = Quill.import('delta');
+    return new Delta();
+  } catch (e) {
+    // Quill not loaded yet, return empty object
+    return {};
+  }
 };
 
 // SSR-safe initial state
@@ -85,7 +93,7 @@ const reducerHandlers = {
         ...state.formData,
         description: {
           ...state.formData.description,
-          description: new Delta(),
+          description: createDelta(),
         },
       },
     };
@@ -100,14 +108,17 @@ export function AddProductFormProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, dispatch] = useReducer(reducer, getInitialState);
+  const [state, dispatch] = useReducer(reducer, getInitialState());
 
   // Client-side hydration sonrası Delta'yı oluştur
   useEffect(() => {
-    if (state.formData.description.description === null) {
+    // Check if we're on client and Delta needs to be hydrated
+    if (typeof window !== 'undefined' && 
+        state.formData.description.description &&
+        Object.keys(state.formData.description.description).length === 0) {
       dispatch({ type: "HYDRATE_DELTA" });
     }
-  }, [state.formData.description.description]);
+  }, []);
 
   const value = { state, dispatch };
 

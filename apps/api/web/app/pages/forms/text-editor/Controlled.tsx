@@ -2,13 +2,28 @@
 import { useState } from "react";
 
 // Local Imports
-import { Delta, TextEditor } from "@/components/shared/form/TextEditor";
+import { TextEditor } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
+const createDelta = (): any => {
+  if (typeof window === 'undefined') {
+    return {}; // Return empty object for SSR
+  }
+  
+  // Try to get Delta from Quill if it's loaded
+  try {
+    const Quill = require('quill');
+    const Delta = Quill.import('delta');
+    return new Delta();
+  } catch (e) {
+    // Quill not loaded yet, return empty object
+    return {};
+  }
+};
 
 const Controlled = () => {
-  const defaultValue = new Delta();
+  const defaultValue = createDelta();
 
   const [content, setContent] = useState(defaultValue);
 

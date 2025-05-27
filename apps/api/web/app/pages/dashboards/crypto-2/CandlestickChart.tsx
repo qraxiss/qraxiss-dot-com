@@ -203,7 +203,7 @@ export function CandlestickChart() {
 
   const SkinComponent = smAndUp ? Card : "div";
 
-
+  const Chart = useApexCharts();
 
   return (
     <SkinComponent className={clsx(smAndUp && "card px-5 pb-3")}>

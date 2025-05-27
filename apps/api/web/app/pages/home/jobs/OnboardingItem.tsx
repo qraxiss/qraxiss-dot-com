@@ -1,6 +1,4 @@
 // Import Dependencies
-import { Link } from "react-router";
-
 // Local Imports
 import { Button, Card } from "@/components/ui";
 import { useThemeContext } from "@/app/contexts/theme/context";
@@ -34,8 +32,8 @@ export function OnboardingItem({
         <Button
           className="mt-8"
           color="primary"
-          component={Link}
-          to={action}
+          component="a"
+          href={action}
           isGlow
         >
           {actionLabel}

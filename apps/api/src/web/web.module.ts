@@ -82,17 +82,27 @@ export const configureFrontEnd = async (
 
                     // render the page using the URL for determining the component
                     // to render (using a folder-based structure)
-                    const { template, metadata } = await render({
-                        url: req.originalUrl,
-                        props,
-                    });
+                    let template, metadata;
+                    try {
+                        const result = await render({
+                            url: req.originalUrl,
+                            props,
+                        });
+                        template = result.template;
+                        metadata = result.metadata;
+                    } catch (error) {
+                        console.error('[SSR Error] Failed to render:', req.originalUrl, error);
+                        // Fallback to client-side rendering
+                        template = '<div id="root"></div>';
+                        metadata = { title: 'Loading...' };
+                    }
 
                     // serialize state to re-hydrate the page in client side
                     const hydrationState = {
                         url: req.originalUrl,
                         props,
                     };
-                    const hydration = `<script>window.__INITIAL_STATE__ = ${uneval(hydrationState)};</script>`
+                    const hydration = `<script>window.__INITIAL_STATE__ = ${uneval(hydrationState)};</script>`;
                     return {
                         element: template,
                         title: "test",

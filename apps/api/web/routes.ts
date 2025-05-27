@@ -19,8 +19,8 @@ function getPageRoutes(importMap: any) {
             .map((path) => {
                 const normalizedPath = removeTrailingSlash(
                     path
-                        // Remove /pages and .jsx extension
-                        .slice(6, -4)
+                        // Remove /app/pages and .tsx extension
+                        .slice(10, -4)
                         // Replace [id] with :id
                         .replace(/\[(\w+)\]/, (_, m) => `:${m}`)
                         // Replace '/index' with '/'

@@ -38,8 +38,6 @@ const initialState: ThemeContextValue = {
 
 const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
-const _html = document?.documentElement;
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
 
@@ -160,33 +158,45 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   useLayoutEffect(() => {
-    if (isDark) _html?.classList.add("dark");
-    else _html?.classList.remove("dark");
+    if (typeof document === 'undefined') return;
+    const html = document.documentElement;
+    if (isDark) html.classList.add("dark");
+    else html.classList.remove("dark");
   }, [isDark]);
 
   useLayoutEffect(() => {
+    if (typeof document === 'undefined') return;
     if (settings.isMonochrome) document.body.classList.add("is-monochrome");
     else document.body.classList.remove("is-monochrome");
   }, [settings.isMonochrome]);
 
   useLayoutEffect(() => {
-    _html!.dataset.themeLight = settings.lightColorScheme.name;
+    if (typeof document === 'undefined') return;
+    const html = document.documentElement;
+    html.dataset.themeLight = settings.lightColorScheme.name;
   }, [settings.lightColorScheme]);
 
   useLayoutEffect(() => {
-    _html!.dataset.themeDark = settings.darkColorScheme.name;
+    if (typeof document === 'undefined') return;
+    const html = document.documentElement;
+    html.dataset.themeDark = settings.darkColorScheme.name;
   }, [settings.darkColorScheme]);
 
   useLayoutEffect(() => {
-    _html!.dataset.themePrimary = settings.primaryColorScheme.name;
+    if (typeof document === 'undefined') return;
+    const html = document.documentElement;
+    html.dataset.themePrimary = settings.primaryColorScheme.name;
   }, [settings.primaryColorScheme]);
 
   useLayoutEffect(() => {
-    _html!.dataset.cardSkin = settings.cardSkin;
+    if (typeof document === 'undefined') return;
+    const html = document.documentElement;
+    html.dataset.cardSkin = settings.cardSkin;
   }, [settings.cardSkin]);
 
   useLayoutEffect(() => {
-    if (document) document.body.dataset.layout = settings.themeLayout;
+    if (typeof document === 'undefined') return;
+    document.body.dataset.layout = settings.themeLayout;
   }, [settings.themeLayout]);
 
   if (!children) {

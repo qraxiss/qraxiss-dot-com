@@ -259,5 +259,5 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
 
 TextEditor.displayName = "TextEditor";
 
-export { TextEditor, Delta, Quill };
+export { TextEditor };
 export type { DeltaStatic, TextEditorProps, TextEditorRef };

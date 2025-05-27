@@ -22,7 +22,8 @@ export interface FormState {
 
 export type FormAction =
   | { type: "SET_FORM_DATA"; payload: Partial<FormState["formData"]> }
-  | { type: "SET_STEP_STATUS"; payload: Partial<FormState["stepStatus"]> };
+  | { type: "SET_STEP_STATUS"; payload: Partial<FormState["stepStatus"]> }
+  | { type: "HYDRATE_DELTA" };
 
 export interface AddProductFormContextType {
   state: FormState;

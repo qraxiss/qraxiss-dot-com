@@ -10,6 +10,7 @@ import { ApexOptions } from "apexcharts";
 
 // Local Imports
 import { Button } from "@/components/ui";
+import { useApexCharts } from "@/hooks";
 
 // ----------------------------------------------------------------------
 
