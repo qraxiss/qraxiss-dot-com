@@ -11,6 +11,11 @@ export default defineConfig({
       return html.replace(/(src|href)="\/(?!web\/)(images|assets)/g, '$1="/web/$2'); // CHANGE !!
     }
   }, preact(), svgr(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      external: [/\.well-known/]
+    }
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL('./', import.meta.url)),
@@ -22,7 +27,13 @@ export default defineConfig({
     noExternal: ['react-syntax-highlighter']
   },
   optimizeDeps: {
-    include: ['react-syntax-highlighter']
+    include: ['react-syntax-highlighter'],
+    exclude: ['@fastify/vite']
+  },
+  server: {
+    fs: {
+      allow: ['../']
+    }
   }
 });
 
