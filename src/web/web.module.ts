@@ -61,6 +61,7 @@ export const configureFrontEnd = async (
         root,
         spa: false,
         dev: !isProduction,
+        logger: false, // Disable Vite's internal logging to suppress timestamps
         clientModule:
             config?.clientModule ??
             (isProduction ? 'dist/server/entry-server.js' : 'entry-server.ts'),

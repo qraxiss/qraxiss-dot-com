@@ -11,6 +11,7 @@ export default defineConfig({
       return html.replace(/(src|href)="\/(?!web\/)(images|assets)/g, '$1="/web/$2'); // CHANGE !!
     }
   }, preact(), svgr(), tailwindcss()],
+  logLevel: 'warn', // Suppress info logs from Vite
   build: {
     rollupOptions: {
       external: [/\.well-known/]

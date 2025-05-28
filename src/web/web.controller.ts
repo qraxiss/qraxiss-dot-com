@@ -1,4 +1,5 @@
 import { Controller, Get, Req } from '@nestjs/common';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 import { Page } from './page';
 import { FastifyRequest } from 'fastify';
 
@@ -67,6 +68,7 @@ export class WebController {
         return new Page();
     }
 
+    @ApiExcludeEndpoint()
     @Get('docs/*')
     docs() {
         return new Page();
@@ -84,6 +86,7 @@ export class WebController {
         return new Page();
     }
 
+    @ApiExcludeEndpoint()
     @Get('settings/*')
     settings() {
         return new Page();
@@ -96,6 +99,7 @@ export class WebController {
     }
 
     // Catch-all route - en sonda olmalı
+    @ApiExcludeEndpoint()
     @Get('*')
     catchAll(@Req() req: FastifyRequest) {
         console.log(`[WebController] Serving page for: ${req.url}`);

@@ -284,20 +284,6 @@
         ]
       }
     },
-    "/web/docs/{path}": {
-      "get": {
-        "operationId": "WebController_docs",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Web"
-        ]
-      }
-    },
     "/web/logs/{type}": {
       "get": {
         "operationId": "WebController_logs",
@@ -326,37 +312,9 @@
         ]
       }
     },
-    "/web/settings/{path}": {
-      "get": {
-        "operationId": "WebController_settings",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Web"
-        ]
-      }
-    },
     "/web/Auth": {
       "get": {
         "operationId": "WebController_auth",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Web"
-        ]
-      }
-    },
-    "/web/{path}": {
-      "get": {
-        "operationId": "WebController_catchAll",
         "parameters": [],
         "responses": {
           "200": {
