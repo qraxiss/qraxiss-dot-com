@@ -9,11 +9,18 @@ import { LocaleContext } from "./context";
 
 // ----------------------------------------------------------------------
 
-// Set the initial language from i18n or fallback to the default theme language
-const initialLang: LocaleCode =
-  ((typeof localStorage !== "undefined" &&
-    localStorage.getItem("i18nextLng")) as LocaleCode) || defaultLang;
+// Get initial language safely for SSR
+const getInitialLang = (): LocaleCode => {
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const storedLang = localStorage.getItem("i18nextLng") as LocaleCode;
+    if (storedLang && locales[storedLang]) {
+      return storedLang;
+    }
+  }
+  return defaultLang;
+};
 
+const initialLang = getInitialLang();
 const initialDir = i18n.dir(initialLang);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {

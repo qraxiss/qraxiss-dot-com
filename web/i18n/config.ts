@@ -11,6 +11,17 @@ import { type LocaleCode, supportedLanguages } from "./langs";
 export const defaultLang: LocaleCode = "en";
 export const fallbackLang: LocaleCode = "en";
 
+// Get initial language safely for SSR
+const getInitialLanguage = (): LocaleCode => {
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const storedLang = localStorage.getItem("i18nextLng") as LocaleCode;
+    if (storedLang && supportedLanguages.includes(storedLang)) {
+      return storedLang;
+    }
+  }
+  return defaultLang;
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -21,7 +32,7 @@ i18n
       lookupSessionStorage: "i18nextLng",
     },
     fallbackLng: fallbackLang,
-    lng: localStorage.getItem("i18nextLng") || defaultLang,
+    lng: getInitialLanguage(),
     supportedLngs: supportedLanguages,
     ns: ["translations"],
     defaultNS: "translations",
