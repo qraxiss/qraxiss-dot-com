@@ -20,11 +20,20 @@ export default defineConfig({
   root: "./web",
   ssr: {
     noExternal: ['react-syntax-highlighter'],
-    external: ['quill-magic-url', 'quill']
+    external: ['quill', 'quill-magic-url']
   },
   optimizeDeps: {
     include: ['react-syntax-highlighter'],
-    exclude: ['quill-magic-url', 'quill']
+    exclude: ['quill', 'quill-magic-url']
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'quill': ['quill']
+        }
+      }
+    }
   }
 });
 

@@ -28,7 +28,8 @@ export async function htmlToDelta(html: string): Promise<Delta> {
   }
 
   // Dynamic import to avoid SSR issues
-  const { default: Quill } = await import('quill');
+  const quillModule = await import('quill');
+  const Quill = quillModule.default;
 
   // Create a temporary container
   const container = document.createElement("div");

@@ -51,6 +51,18 @@
     "config.ts",
     "Component.tsx",
     "base.tsx",
-    "App.tsx"
+    "App.tsx",
+    "eslint.config.js",
+    "utils",
+    "state",
+    "i18n",
+    "middleware",
+    "hooks",
+    "constants",
+    "configs",
+    "components",
+    "app",
+    "api",
+    "@types"
   ]
 }

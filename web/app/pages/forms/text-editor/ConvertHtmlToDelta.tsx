@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { TextEditor } from "@/components/shared/form/TextEditor";
 import { universalHtmlToDelta } from "@/utils/quillUtils";
-import type { Delta } from "quill";
+import type { DeltaStatic } from "@/components/shared/form/TextEditor";
 
 const html = `<p>Only <em>italic</em> is allowed. <strong>Bold</strong> is not.</p>`;
 
 const ConvertHtmlToDelta = () => {
-  const [delta, setDelta] = useState<Delta | undefined>(undefined);
+  const [delta, setDelta] = useState<DeltaStatic | undefined>(undefined);
 
   useEffect(() => {
     const convertHtml = async () => {

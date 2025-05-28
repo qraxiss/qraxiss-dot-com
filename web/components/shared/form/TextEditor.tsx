@@ -9,7 +9,16 @@ import {
   useState,
 } from "react";
 import clsx from "clsx";
-import type { Delta as DeltaStatic } from "quill";
+// Define DeltaStatic interface for SSR compatibility
+export interface DeltaStatic {
+  ops: Array<{
+    insert?: string | Record<string, any>;
+    delete?: number;
+    retain?: number;
+    attributes?: Record<string, any>;
+  }>;
+  diff?: (other: DeltaStatic) => DeltaStatic;
+}
 
 // Local Imports
 import { InputErrorMsg } from "@/components/ui";
@@ -132,7 +141,16 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
           ]);
 
           Quill = quillModule.default;
-          Delta = Quill.import("delta");
+          // In Quill 2.x, Delta is imported differently
+          try {
+            Delta = Quill.import("delta");
+          } catch (e) {
+            // Fallback for newer versions where Delta might be exposed differently
+            Delta = class DeltaFallback {
+              ops: any[];
+              constructor() { this.ops = []; }
+            };
+          }
           quillCSS = quillCSSModule.default;
 
           // Inject styles
@@ -260,4 +278,4 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
 TextEditor.displayName = "TextEditor";
 
 export { TextEditor };
-export type { DeltaStatic, TextEditorProps, TextEditorRef };
+export type { TextEditorProps, TextEditorRef };

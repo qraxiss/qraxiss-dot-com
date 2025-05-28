@@ -9,7 +9,7 @@ import { Button, Input, Textarea } from "@/components/ui";
 import { useAddProductFormContext } from "../AddProductFormContext";
 import { MetaTags } from "../components/MetaTags";
 import { descriptionSchema } from "../schema";
-import type { Delta } from "quill";
+import type { DeltaStatic } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ export function Description({
               name="description"
               render={({ field: { value, onChange, ...rest } }) => (
                 <TextEditor
-                  value={value as Delta}
+                  value={value as DeltaStatic}
                   onChange={(val) => onChange(val)}
                   placeholder="Enter your content..."
                   className="mt-1.5 [&_.ql-editor]:max-h-80 [&_.ql-editor]:min-h-[12rem]"

@@ -7,24 +7,14 @@ import {
   FormState,
   FormAction,
 } from "./AddProductFormContext";
+import type { DeltaStatic } from "@/components/shared/form/TextEditor";
 
 // ----------------------------------------------------------------------
 
 // Lazy initialization function for Delta (SSR-safe)
-const createDelta = (): any => {
-  if (typeof window === 'undefined') {
-    return {}; // Return empty object for SSR
-  }
-  
-  // Try to get Delta from Quill if it's loaded
-  try {
-    const Quill = require('quill');
-    const Delta = Quill.import('delta');
-    return new Delta();
-  } catch (e) {
-    // Quill not loaded yet, return empty object
-    return {};
-  }
+const createDelta = (): DeltaStatic => {
+  // Return a valid Delta-like object
+  return { ops: [] };
 };
 
 // SSR-safe initial state

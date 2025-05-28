@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, Resolver, useForm } from "react-hook-form";
 import { DocumentPlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
-import type { Delta as DeltaType } from "quill";
+import type { DeltaStatic } from "@/components/shared/form/TextEditor";
 import { useEffect, useState } from "react";
 
 // Local Imports
@@ -21,20 +21,9 @@ import { Combobox } from "@/components/shared/form/StyledCombobox";
 // ----------------------------------------------------------------------
 
 // SSR-safe Delta initialization
-const createDelta = (): any => {
-  if (typeof window === 'undefined') {
-    return {}; // Return empty object for SSR
-  }
-  
-  // Try to get Delta from Quill if it's loaded
-  try {
-    const Quill = require('quill');
-    const Delta = Quill.import('delta');
-    return new Delta();
-  } catch (e) {
-    // Quill not loaded yet, return empty object
-    return {};
-  }
+const createDelta = (): DeltaStatic => {
+  // Return a valid Delta-like object
+  return { ops: [] };
 };
 
 const getInitialState = () => ({
@@ -191,7 +180,7 @@ const NewPostFrom = () => {
                       name="content"
                       render={({ field: { value, onChange, ...rest } }) => (
                         <TextEditor
-                          value={(isClient && value) ? value as DeltaType : createDelta()}
+                          value={(isClient && value) ? value as DeltaStatic : createDelta()}
                           onChange={(val) => onChange(val)}
                           placeholder="Enter your content..."
                           className="mt-1.5 [&_.ql-editor]:max-h-80 [&_.ql-editor]:min-h-[12rem]"
