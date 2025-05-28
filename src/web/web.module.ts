@@ -16,6 +16,7 @@ import {
     Injectable,
     Module,
     NestInterceptor,
+    Logger,
 } from '@nestjs/common';
 import { map, Observable } from 'rxjs';
 import { APP_INTERCEPTOR } from '@nestjs/core';
@@ -82,7 +83,7 @@ export const configureFrontEnd = async (
 
                     // render the page using the URL for determining the component
                     // to render (using a folder-based structure)
-                    let template, metadata;
+                    let template: string, metadata: any;
                     try {
                         const result = await render({
                             url: req.originalUrl,
@@ -128,14 +129,16 @@ export const configureFrontEnd = async (
 export const initializeFrontEnd = async (
     app: NestFastifyApplication<RawServerBase>,
 ) => {
+    const logger = new Logger('WebModule');
     const instance = app.getHttpAdapter().getInstance() as FastifyInstance;
 
-    instance.addHook('onRequest', (req, res, done) => {
+    instance.addHook('onRequest', (_req, res, done) => {
         res.appProps = {};
         done();
     });
 
     await instance.vite.ready();
+    logger.log('Vite SSR build completed and ready to serve');
 };
 
 
