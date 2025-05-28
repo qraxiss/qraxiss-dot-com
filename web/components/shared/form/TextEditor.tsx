@@ -56,6 +56,7 @@ interface TextEditorProps {
     source: string,
   ) => void;
   onChange?: (value: DeltaStatic, quill?: any) => void;
+  onReady?: (quill: any) => void;
   placeholder?: string;
   modules?: Record<string, any>;
   className?: string;
@@ -102,6 +103,7 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
       onTextChange,
       onSelectionChange,
       onChange,
+      onReady,
       placeholder,
       modules,
       className,
@@ -140,12 +142,15 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
             import("quill/dist/quill.snow.css?inline")
           ]);
 
+          console.log(quillModule)
+
           Quill = quillModule.default;
-          // In Quill 2.x, Delta is imported differently
+          // In Quill 1.3.x, Delta is imported via Quill.import
           try {
             Delta = Quill.import("delta");
           } catch (e) {
-            // Fallback for newer versions where Delta might be exposed differently
+            // Fallback if Delta import fails
+            console.error("Failed to import Delta:", e);
             Delta = class DeltaFallback {
               ops: any[];
               constructor() { this.ops = []; }
@@ -194,11 +199,17 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
 
       quill.enable(!readOnly);
 
-      if (_value && typeof _value === 'object') {
-        quill.setContents(_value);
+      // Initial value setting only
+      if (value && typeof value === 'object') {
+        quill.setContents(value);
+      } else if (defaultValue && typeof defaultValue === 'object') {
+        quill.setContents(defaultValue);
       }
 
       quillRef.current = quill;
+
+      // Quill hazır olduğunda callback'i çağır
+      onReady?.(quill);
 
       quill.on(Quill.events.TEXT_CHANGE, (...args: any[]) => {
         const [delta, oldDelta, source] = args;
@@ -220,7 +231,7 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
         quillRef.current = null;
         container.innerHTML = "";
       };
-    }, [isQuillLoaded, readOnly, modules, placeholder, _value]);
+    }, [isQuillLoaded, readOnly, modules, placeholder]);
 
     useImperativeHandle(forwardedRef, () => ({
       getQuillInstance: () => quillRef.current,
@@ -230,12 +241,16 @@ const TextEditor = forwardRef<TextEditorRef, TextEditorProps>(
     }));
 
     useEffect(() => {
+      // Only update if external value prop changes (not internal state)
       if (quillRef.current && value !== undefined && Delta) {
         const currentContent = quillRef.current.getContents();
-        const diff = currentContent.diff(value);
-
-        if (diff && diff?.ops?.length > 0) {
-          quillRef.current.setContents(value);
+        
+        // Only update if there's a real difference and we're not currently focused
+        if (!quillRef.current.hasFocus()) {
+          const diff = currentContent.diff(value);
+          if (diff && diff?.ops?.length > 0) {
+            quillRef.current.setContents(value);
+          }
         }
       }
     }, [value]);

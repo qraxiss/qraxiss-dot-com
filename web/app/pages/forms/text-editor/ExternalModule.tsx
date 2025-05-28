@@ -25,10 +25,10 @@ const ExternalModule = () => {
           import("quill"),
           import("quill-magic-url")
         ]);
-        
+
         const Quill = QuillModule.default;
         const MagicUrlModule = MagicUrl.default;
-        
+
         // Register the magic URL module
         Quill.register("modules/magicUrl", MagicUrlModule);
         setIsModuleRegistered(true);

@@ -19,21 +19,10 @@ export default defineConfig({
   base: "/web",
   root: "./web",
   ssr: {
-    noExternal: ['react-syntax-highlighter'],
-    external: ['quill', 'quill-magic-url']
+    noExternal: ['react-syntax-highlighter']
   },
   optimizeDeps: {
-    include: ['react-syntax-highlighter'],
-    exclude: ['quill', 'quill-magic-url']
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'quill': ['quill']
-        }
-      }
-    }
+    include: ['react-syntax-highlighter']
   }
 });
 

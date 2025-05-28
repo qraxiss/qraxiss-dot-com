@@ -12,19 +12,35 @@ const Instance = () => {
   const ref = useRef<TextEditorRef>(null);
 
   useEffect(() => {
-    const ql = ref.current?.getQuillInstance();
+    // Taş devri yöntemi: Quill'in yüklenmesini bekle 🦕
+    const checkQuill = () => {
+      const ql = ref.current?.getQuillInstance();
+      
+      if (ql) {
+        console.log("Quill bulundu!", ql);
+        
+        const calc = () => {
+          const trimmed = ql.getText().trim();
+          setWordLength(trimmed.length > 0 ? trimmed.split(/\s+/).length : 0);
+        };
 
-    invariant(ql, "Quill not found");
+        ql.on("text-change", calc);
+        calc(); // İlk hesaplama
 
-    const calc = () => {
-      const trimmed = ql.getText().trim();
-      setWordLength(trimmed.length > 0 ? trimmed.split(/\s+/).length : 0);
+        return () => {
+          ql.off("text-change", calc);
+        };
+      } else {
+        console.log("Quill henüz hazır değil, bekliyoruz...");
+        // 100ms sonra tekrar dene
+        setTimeout(checkQuill, 100);
+      }
     };
 
-    ql.on("text-change", calc);
-
+    const timeoutId = setTimeout(checkQuill, 100);
+    
     return () => {
-      ql.off("text-change", calc);
+      clearTimeout(timeoutId);
     };
   }, []);
 
