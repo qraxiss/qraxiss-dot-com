@@ -58,11 +58,16 @@ export const TaskCard = forwardRef<HTMLElement, TaskCardProps>(
     const { instanceId, registerCard } = useBoardContext();
 
     useEffect(() => {
-      invariant(cardRef.current, "Card ref is required");
+      const element = cardRef.current;
+      if (!element) {
+        console.warn('TaskCard element not found for registration');
+        return;
+      }
+      
       return registerCard({
         cardId: id,
         entry: {
-          element: cardRef.current,
+          element: element,
         },
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,7 +75,10 @@ export const TaskCard = forwardRef<HTMLElement, TaskCardProps>(
 
     useEffect(() => {
       const element = cardRef.current;
-      invariant(element);
+      if (!element) {
+        console.warn('TaskCard element not found, skipping drag and drop setup');
+        return;
+      }
 
       return combine(
         draggable({

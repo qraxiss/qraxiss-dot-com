@@ -1,5 +1,5 @@
 // Import Dependencies
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
 
 // ----------------------------------------------------------------------
@@ -13,19 +13,20 @@ export type BoxProps<T extends ElementType = "div"> = {
 // Specialized type for any props
 type AnyProps = Record<string, any>;
 
-function Box<T extends ElementType = "div">({
+const Box = forwardRef<any, BoxProps & AnyProps>(function Box({
     component,
     className,
     ...rest
-}: BoxProps<T> & AnyProps) {
+}, ref) {
     const Component = component || "div";
 
     return (
         <Component
             className={clsx("relative break-words print:border", className)}
+            ref={ref}
             {...rest}
         />
     );
-}
+});
 
 export { Box };
