@@ -17,6 +17,8 @@ const app = {
 function RootErrorBoundary() {
   const error = useRouteError();
 
+  console.error(error)
+
   if (
     isRouteErrorResponse(error) &&
     Object.keys(app).includes(error.status.toString())

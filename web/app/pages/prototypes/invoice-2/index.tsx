@@ -10,7 +10,7 @@ import { ItemsTable } from "./ItemsTable";
 // Lazy import for SSR compatibility
 let useReactToPrint: any;
 if (typeof window !== 'undefined') {
-  useReactToPrint = require('react-to-print').useReactToPrint;
+  useReactToPrint = (await import('react-to-print')).useReactToPrint;
 }
 
 // ----------------------------------------------------------------------
