@@ -13,6 +13,7 @@ import { Fragment } from "react";
 
 // Local Imports
 import { Avatar, Button, Card } from "@/components/ui";
+import { SafeIcon } from "@/components/shared/SafeIcon";
 
 // ----------------------------------------------------------------------
 
@@ -95,7 +96,7 @@ export function ClientMessages() {
               href="##"
               className="hover:text-primary-600 focus:text-primary-600 dark:hover:text-primary-400 dark:focus:text-primary-400"
             >
-              <ChevronRightIcon className="size-5 ltr:-mr-1 rtl:-ml-1 rtl:rotate-180" />
+              <SafeIcon Icon={ChevronRightIcon} className="size-5 ltr:-mr-1 rtl:-ml-1 rtl:rotate-180" />
             </a>
           </div>
         ))}
@@ -116,7 +117,7 @@ function ActionMenu() {
         isIcon
         className="size-8 rounded-full"
       >
-        <EllipsisHorizontalIcon className="size-5" />
+        <SafeIcon Icon={EllipsisHorizontalIcon} className="size-5" />
       </MenuButton>
       <Transition
         as={Fragment}

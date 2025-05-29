@@ -30,6 +30,7 @@ import {
   Button,
   Card,
 } from "@/components/ui";
+import { SafeIcon } from "@/components/shared/SafeIcon";
 
 // ----------------------------------------------------------------------
 
@@ -120,7 +121,7 @@ export function ContactList() {
                       open && "-rotate-180",
                     )}
                   >
-                    <ChevronDownIcon className="size-4.5" />
+                    <SafeIcon Icon={ChevronDownIcon} className="size-4.5" />
                   </div>
                 )}
               </AccordionButton>
@@ -183,7 +184,7 @@ function ActionMenu() {
         isIcon
         className="size-8 rounded-full"
       >
-        <EllipsisHorizontalIcon className="size-5" />
+        <SafeIcon Icon={EllipsisHorizontalIcon} className="size-5" />
       </MenuButton>
       <Transition
         as={Fragment}

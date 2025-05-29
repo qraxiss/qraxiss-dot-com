@@ -12,6 +12,7 @@ import { ApexOptions } from "apexcharts";
 
 // Local Imports
 import { Avatar, Badge, Box, Card } from "@/components/ui";
+import { SafeIcon } from "@/components/shared/SafeIcon";
 
 // ----------------------------------------------------------------------
 
@@ -167,7 +168,7 @@ export function Statistics() {
               initialColor="success"
               classNames={{ display: "mask is-star rounded-none" }}
             >
-              <PresentationChartLineIcon className="size-5" />
+              <SafeIcon Icon={PresentationChartLineIcon} className="size-5" />
             </Avatar>
           </div>
           <div className="mt-2">
@@ -177,7 +178,7 @@ export function Statistics() {
               className="gap-1 rounded-full"
             >
               <span>10%</span>
-              <ArrowTrendingUpIcon className="size-4" />
+              <SafeIcon Icon={ArrowTrendingUpIcon} className="size-4" />
             </Badge>
           </div>
         </Card>
@@ -194,7 +195,7 @@ export function Statistics() {
               initialColor="info"
               classNames={{ display: "mask is-star rounded-none" }}
             >
-              <ClockIcon className="size-5" />
+              <SafeIcon Icon={ClockIcon} className="size-5" />
             </Avatar>
           </div>
           <div className="mt-2">
@@ -204,7 +205,7 @@ export function Statistics() {
               className="gap-1 rounded-full"
             >
               <span>6%</span>
-              <ArrowTrendingUpIcon className="size-4" />
+              <SafeIcon Icon={ArrowTrendingUpIcon} className="size-4" />
             </Badge>
           </div>
         </Card>
@@ -221,7 +222,7 @@ export function Statistics() {
               initialColor="secondary"
               classNames={{ display: "mask is-star rounded-none" }}
             >
-              <TicketIcon className="size-5" />
+              <SafeIcon Icon={TicketIcon} className="size-5" />
             </Avatar>
           </div>
           <div className="mt-2">
@@ -231,7 +232,7 @@ export function Statistics() {
               className="gap-1 rounded-full"
             >
               <span>9%</span>
-              <ArrowTrendingUpIcon className="size-4" />
+              <SafeIcon Icon={ArrowTrendingUpIcon} className="size-4" />
             </Badge>
           </div>
         </Card>
@@ -248,13 +249,13 @@ export function Statistics() {
               initialColor="warning"
               classNames={{ display: "mask is-star rounded-none" }}
             >
-              <ShieldCheckIcon className="size-5" />
+              <SafeIcon Icon={ShieldCheckIcon} className="size-5" />
             </Avatar>
           </div>
           <div className="mt-2">
             <Badge color="error" variant="soft" className="gap-1 rounded-full">
               <span>2%</span>
-              <ArrowTrendingDownIcon className="size-4" />
+              <SafeIcon Icon={ArrowTrendingDownIcon} className="size-4" />
             </Badge>
           </div>
         </Card>

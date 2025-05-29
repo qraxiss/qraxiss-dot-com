@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-// Placeholder component for SSR
-const ChartPlaceholder = () => null;
+// Placeholder component for SSR that accepts and ignores all props
+const ChartPlaceholder = (_props: any) => null;
 
 export function useApexCharts() {
     const [Chart, setChart] = useState<any>(() => {

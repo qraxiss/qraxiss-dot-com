@@ -14,6 +14,7 @@ import { ApexOptions } from "apexcharts";
 
 // Local Imports
 import { Button, Card } from "@/components/ui";
+import { SafeIcon } from "@/components/shared/SafeIcon";
 
 // ----------------------------------------------------------------------
 
@@ -106,7 +107,7 @@ function ActionMenu() {
         isIcon
         className="size-8 rounded-full"
       >
-        <EllipsisHorizontalIcon className="size-5" />
+        <SafeIcon Icon={EllipsisHorizontalIcon} className="size-5" />
       </MenuButton>
       <Transition
         as={Fragment}
