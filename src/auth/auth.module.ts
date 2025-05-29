@@ -7,8 +7,8 @@ import { ConstantModule } from 'src/constant/constant.module';
 import { ConstantService } from 'src/constant/constant.service';
 
 @Module({
-  controllers: [AuthController],
-  providers: [AuthService, JwtService, JwtStrategy, ConstantService,],
-  imports: [ConstantModule]
+    controllers: [AuthController],
+    providers: [AuthService, JwtService, JwtStrategy, ConstantService],
+    imports: [ConstantModule],
 })
-export class AuthModule { }
+export class AuthModule {}

@@ -20,7 +20,7 @@ import {
 } from '@nestjs/common';
 import { map, Observable } from 'rxjs';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { WebController } from './web.controller'
+import { WebController } from './web.controller';
 import { join } from 'path';
 import { Page } from './page';
 
@@ -42,7 +42,7 @@ type Configuration = {
  */
 export const configureFrontEnd = async (
     adapter: any,
-    config?: Configuration,
+    config?: Configuration
 ) => {
     // silly workaround for https://github.com/microsoft/TypeScript/issues/42873
     const ourAdapter = adapter as FastifyAdapter;
@@ -56,7 +56,7 @@ export const configureFrontEnd = async (
     // FastifyVite loads Middie, the middleware engine of Fastify
     // But NestJS also loads Middie for its own internal middleware system
     // Which leads to a clash as both of them try to load Middie
-    const root = join(process.cwd(), "/web")
+    const root = join(process.cwd(), '/web');
     await ourAdapter.register(FastifyVite as any, {
         root,
         spa: false,
@@ -93,7 +93,11 @@ export const configureFrontEnd = async (
                         template = result.template;
                         metadata = result.metadata;
                     } catch (error) {
-                        console.error('[SSR Error] Failed to render:', req.originalUrl, error);
+                        console.error(
+                            '[SSR Error] Failed to render:',
+                            req.originalUrl,
+                            error
+                        );
                         // Fallback to client-side rendering
                         template = '<div id="root"></div>';
                         metadata = { title: 'Loading...' };
@@ -107,8 +111,8 @@ export const configureFrontEnd = async (
                     const hydration = `<script>window.__INITIAL_STATE__ = ${uneval(hydrationState)};</script>`;
                     return {
                         element: template,
-                        title: "test",
-                        hydration
+                        title: 'test',
+                        hydration,
                     };
                 };
             },
@@ -128,7 +132,7 @@ export const configureFrontEnd = async (
  * @param app
  */
 export const initializeFrontEnd = async (
-    app: NestFastifyApplication<RawServerBase>,
+    app: NestFastifyApplication<RawServerBase>
 ) => {
     const logger = new Logger('WebModule');
     const instance = app.getHttpAdapter().getInstance() as FastifyInstance;
@@ -141,7 +145,6 @@ export const initializeFrontEnd = async (
     await instance.vite.ready();
     logger.log('Vite SSR build completed and ready to serve');
 };
-
 
 @Injectable()
 export class FrontEndInterceptor<T> implements NestInterceptor<T, any> {
@@ -158,11 +161,11 @@ export class FrontEndInterceptor<T> implements NestInterceptor<T, any> {
                         res,
                     });
                     const html = (res as any).type('text/html').html(rendered);
-                    return html
+                    return html;
                 }
 
                 return data;
-            }),
+            })
         );
     }
 }
@@ -176,4 +179,4 @@ export class FrontEndInterceptor<T> implements NestInterceptor<T, any> {
     ],
     controllers: [WebController],
 })
-export class WebModule { }
+export class WebModule {}

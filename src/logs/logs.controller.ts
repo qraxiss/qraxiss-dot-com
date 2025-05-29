@@ -12,28 +12,39 @@ import { LogResponseDto } from './log.dto';
 export class LogsController {
     @JwtAuth()
     @Get('error/:lines')
-    @ApiParam({ name: 'lines', type: Number, description: 'Number of error log lines to retrieve' })
+    @ApiParam({
+        name: 'lines',
+        type: Number,
+        description: 'Number of error log lines to retrieve',
+    })
     @ApiResponse({
         status: 200,
-        type: LogResponseDto
+        type: LogResponseDto,
     })
     async getErrorLogs(@Param('lines') lines: number) {
         return await safeRun(this.readLastLines('src/logs/app-err.log', lines));
     }
     @JwtAuth()
     @Get('output/:lines')
-    @ApiParam({ name: 'lines', type: Number, description: 'Number of output log lines to retrieve' })
+    @ApiParam({
+        name: 'lines',
+        type: Number,
+        description: 'Number of output log lines to retrieve',
+    })
     @ApiResponse({
         status: 200,
-        type: LogResponseDto
+        type: LogResponseDto,
     })
     async getOutputLogs(@Param('lines') lines: number) {
         return await safeRun(this.readLastLines('src/logs/app-out.log', lines));
     }
 
-    private async readLastLines(filePath: string, lines: number): Promise<string[]> {
+    private async readLastLines(
+        filePath: string,
+        lines: number
+    ): Promise<string[]> {
         const fileExists = promisify(fs.exists);
-        if (!await fileExists(filePath)) {
+        if (!(await fileExists(filePath))) {
             return [];
         }
 
@@ -41,7 +52,7 @@ export class LogsController {
         const fileStream = fs.createReadStream(filePath);
         const rl = readline.createInterface({
             input: fileStream,
-            crlfDelay: Infinity
+            crlfDelay: Infinity,
         });
 
         for await (const line of rl) {

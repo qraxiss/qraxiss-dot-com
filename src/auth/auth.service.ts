@@ -9,29 +9,31 @@ export class AuthService {
     constructor(
         private jwtService: JwtService,
         private constantsService: ConstantService
-    ) { }
+    ) {}
 
     async validateUser(email: string, pass: string): Promise<any> {
-        const user = this.constantsService.CONSTANTS.USERS.find(user => user.email === email);
+        const user = this.constantsService.CONSTANTS.USERS.find(
+            (user) => user.email === email
+        );
 
         if (!user) {
-            throw new NotFoundError(`${email} is not found!`)
+            throw new NotFoundError(`${email} is not found!`);
         }
 
         if (user.password !== pass) {
-            throw new WrongPassword()
+            throw new WrongPassword();
         }
 
         return user;
     }
 
     async login(user: UserType): Promise<LoginDto> {
-        await this.validateUser(user.email, user.password)
+        await this.validateUser(user.email, user.password);
 
         const payload = { email: user.email, sub: user.email };
         return {
             access_token: this.jwtService.sign(payload, {
-                secret: this.constantsService.CONSTANTS.JWT_KEY
+                secret: this.constantsService.CONSTANTS.JWT_KEY,
             }),
         };
     }

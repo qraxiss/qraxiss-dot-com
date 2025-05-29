@@ -3,38 +3,37 @@ import { ConstantsType } from './constant.type';
 
 @Injectable()
 export class ConstantService {
-    public readonly CONSTANTS: ConstantsType
+    public readonly CONSTANTS: ConstantsType;
 
     constructor() {
         this.CONSTANTS = {
-            NODE_ENV: "development",
+            NODE_ENV: 'development',
 
             DATABASE: {
                 PORT: 3306,
-                HOST: "127.0.0.1",
-                USERNAME: "admin",
-                PASSWORD: "admin123",
-                NAME: "sample-database"
+                HOST: '127.0.0.1',
+                USERNAME: 'admin',
+                PASSWORD: 'admin123',
+                NAME: 'sample-database',
             },
 
             APP: {
                 PORT: 3000,
-                HOST: "localhost",
-                PATH: "",
-                PROTOCOL: "http"
+                HOST: 'localhost',
+                PATH: '',
+                PROTOCOL: 'http',
             },
 
-            ADMIN_KEY: "HIGHSECURIRTYADMINKEY",
-            JWT_KEY: "HIGHSECURIRTYJWTKEY",
+            ADMIN_KEY: 'HIGHSECURIRTYADMINKEY',
+            JWT_KEY: 'HIGHSECURIRTYJWTKEY',
             USERS: [
                 {
-                    email: "user@mail.com",
-                    password: "password123!"
-                }
-            ]
-        }
+                    email: 'user@mail.com',
+                    password: 'password123!',
+                },
+            ],
+        };
     }
-
 
     get isDevelopment(): boolean {
         return this.CONSTANTS.NODE_ENV !== 'production';
@@ -45,13 +44,12 @@ export class ConstantService {
     }
 
     get appUrl(): string {
-        const path = `${this.CONSTANTS.APP.PATH ? `/${this.CONSTANTS.APP.PATH}` : ''}`
+        const path = `${this.CONSTANTS.APP.PATH ? `/${this.CONSTANTS.APP.PATH}` : ''}`;
 
         if (this.isDevelopment) {
-            return `${this.CONSTANTS.APP.PROTOCOL}://${this.CONSTANTS.APP.HOST}:${this.CONSTANTS.APP.PORT}${path}`
+            return `${this.CONSTANTS.APP.PROTOCOL}://${this.CONSTANTS.APP.HOST}:${this.CONSTANTS.APP.PORT}${path}`;
         } else {
-            return `${this.CONSTANTS.APP.PROTOCOL}://${this.CONSTANTS.APP.HOST}${path}`
+            return `${this.CONSTANTS.APP.PROTOCOL}://${this.CONSTANTS.APP.HOST}${path}`;
         }
     }
-
 }
