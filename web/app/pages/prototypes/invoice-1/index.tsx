@@ -19,7 +19,7 @@ export default function Invoice1() {
   const invoiceRef = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint ? useReactToPrint({
     contentRef: invoiceRef,
-  }) : () => {};
+  }) : () => { };
 
   return (
     <Page title="Invoice V1">
@@ -55,7 +55,7 @@ export default function Invoice1() {
             <div className="flex flex-col justify-between sm:flex-row">
               <div className="text-center sm:text-left">
                 <h2 className="text-primary-600 dark:text-primary-400 text-2xl font-semibold uppercase">
-                  tailux
+                  qraxiss
                 </h2>
                 <div className="space-y-1 pt-2">
                   <p>Sparksuite, Inc.</p>

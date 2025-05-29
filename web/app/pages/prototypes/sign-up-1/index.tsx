@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 // Local Imports
 import { Button, Card, Checkbox, Input } from "@/components/ui";
-import Logo from "@/assets/appLogo.svg?react";
+import Logo from "@/assets/qraxLogo.svg?react";
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ export default function SignUpV1() {
           <Logo className="mx-auto size-16" />
           <div className="mt-4">
             <h2 className="dark:text-dark-100 text-2xl font-semibold text-gray-600">
-              Welcome To Tailux
+              Welcome To qraxiss
             </h2>
             <p className="dark:text-dark-300 text-gray-400">
               Please sign up to continue

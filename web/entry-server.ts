@@ -7,6 +7,10 @@ import { LocaleProvider } from './app/contexts/locale/Provider.js';
 import { BreakpointProvider } from './app/contexts/breakpoint/Provider.js';
 import { SidebarProvider } from './app/contexts/sidebar/Provider.js';
 
+// Import CSS synchronously for SSR to ensure styles are collected
+import "simplebar-react/dist/simplebar.min.css";
+import "./styles/index.css";
+
 export async function render({ props, url }: EntryConfig) {
   const { component } = createApp({
     url,
@@ -17,16 +21,16 @@ export async function render({ props, url }: EntryConfig) {
   // Note: Redux and Auth providers are excluded as they need client-side initialization
   const wrappedComponent = h(
     ThemeProvider,
-    {},
+    null,
     h(
       LocaleProvider,
-      {},
+      null,
       h(
         BreakpointProvider,
-        {},
+        null,
         h(
           SidebarProvider,
-          {},
+          null,
           component
         )
       )

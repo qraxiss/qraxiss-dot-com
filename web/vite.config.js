@@ -3,6 +3,7 @@ import svgr from "vite-plugin-svgr";
 import { fileURLToPath, URL } from 'node:url';
 import tailwindcss from "@tailwindcss/vite";
 import { preact } from '@preact/preset-vite';
+import { ssrCssPlugin } from './vite-ssr-css-plugin.js';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [{
@@ -10,7 +11,7 @@ export default defineConfig({
     transformIndexHtml(html) {
       return html.replace(/(src|href)="\/(?!web\/)(images|assets)/g, '$1="/web/$2'); // CHANGE !!
     }
-  }, preact(), svgr(), tailwindcss()],
+  }, ssrCssPlugin(), preact(), svgr(), tailwindcss()],
   logLevel: 'warn', // Suppress info logs from Vite
   build: {
     rollupOptions: {

@@ -1,6 +1,6 @@
 // Local Imports
 import { Card } from "@/components/ui";
-import Logo from "@/assets/appLogo.svg?react";
+import Logo from "@/assets/qraxLogo.svg?react";
 import LogoType from "@/assets/logotype.svg?react";
 import TailwindIcon from "@/assets/tailwind.svg?react";
 import ReactIcon from "@/assets/react.svg?react";
@@ -47,10 +47,10 @@ export function Hero() {
           <LogoType className="dark:text-dark-50 h-5 w-auto text-gray-800" />
         </div>
         <p className="mt-4">
-          Tailux is a versatile Admin and Webapp UI Kit built on React and the
+          qraxiss is a versatile Admin and Webapp UI Kit built on React and the
           TailwindCSS Framework. It features a wide range of reusable
           components, layouts, forms, dashboards, fully functional datatables,
-          and web app templates. Tailux is a robust, ultra-responsive, modern,
+          and web app templates. qraxiss is a robust, ultra-responsive, modern,
           and highly flexible UI Kit designed for building cutting-edge web
           applications. Whether you&apos;re developing a SaaS platform, custom
           admin panels, dashboards, CRMs, CMSs, LMSs, AI-powered apps, crypto

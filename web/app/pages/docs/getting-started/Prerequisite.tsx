@@ -14,8 +14,8 @@ export function Prerequisite() {
       <div className="text-sm-plus mt-5">
         <div className="space-y-3">
           <p>
-            Tailux is built using <strong>ReactJS</strong> and{" "}
-            <strong>Tailwind CSS</strong>. To work effectively with Tailux, its
+            qraxiss is built using <strong>ReactJS</strong> and{" "}
+            <strong>Tailwind CSS</strong>. To work effectively with qraxiss, its
             important to have a foundational understanding of these
             technologies. ReactJS enables you to build dynamic and interactive
             web applications, while Tailwind CSS allows for rapid styling using
@@ -24,7 +24,7 @@ export function Prerequisite() {
           <p>
             In addition to ReactJS and Tailwind CSS, knowledge of HTML, CSS, and
             JavaScript is highly recommended. These core web development skills
-            will help you understand and modify Tailux structure, design, and
+            will help you understand and modify qraxiss structure, design, and
             interactivity as needed.
           </p>
           <p>
@@ -36,7 +36,7 @@ export function Prerequisite() {
             To get started, ensure <strong>Node.js</strong> is installed on your
             machine. We recommend using the Node.js LTS version. You will also
             need a dependency manager like npm or yarn, with{" "}
-            <strong>yarn</strong> being the preferred choice for Tailux.
+            <strong>yarn</strong> being the preferred choice for qraxiss.
           </p>
         </div>
         <div className="mt-8">
@@ -52,7 +52,7 @@ export function Prerequisite() {
             To ensure you are always using the latest features, bug fixes, and
             security updates, its important to stay up to date with the
             changelogs and new releases for the core technologies used in
-            Tailux:
+            qraxiss:
           </p>
           <ul className="space-y-3">
             <li>
@@ -77,7 +77,7 @@ export function Prerequisite() {
               and plugins.
             </li>
             <li>
-              <strong>Tailux:</strong> Monitor the official Tailux{" "}
+              <strong>qraxiss:</strong> Monitor the official qraxiss{" "}
               <a
                 href="/docs/changelogs"
                 className="text-primary-600 dark:text-primary-400 hover:underline"

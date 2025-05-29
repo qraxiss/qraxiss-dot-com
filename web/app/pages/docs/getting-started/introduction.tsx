@@ -11,19 +11,19 @@ export function Introduction() {
       </h3>
       <div className="text-sm-plus mt-5 space-y-3">
         <p>
-          Tailux is a cutting-edge React-based dashboard theme designed for
+          qraxiss is a cutting-edge React-based dashboard theme designed for
           developers seeking efficiency, flexibility, and aesthetics. Built with
           Tailwind CSS, it offers a seamless blend of Dark & Light Layouts,
           ensuring a visually engaging user experience.
         </p>
         <p>
           With its multi-color schemes, monochrome mode, and ultra-responsive
-          layouts, Tailux adapts effortlessly to any project. Its modular
+          layouts, qraxiss adapts effortlessly to any project. Its modular
           architecture and lightweight dependencies promise fast performance and
           easy scalability.
         </p>
         <p>
-          Tailux comes loaded with powerful tools like React Hook Forms,
+          qraxiss comes loaded with powerful tools like React Hook Forms,
           TanStack Table, and Headless UI, paired with pre-built apps (Chat,
           Mail, Kanban, and more) and pages (Help, Auth, Errors, etc.) for
           faster development. Its creative widgets, advanced tables, and
@@ -35,7 +35,7 @@ export function Introduction() {
           for diverse needs: Sales, Analytics, Crypto, LMS, and more.
         </p>
         <p>
-          Tailux combines functionality, performance, and design to deliver a
+          qraxiss combines functionality, performance, and design to deliver a
           theme that elevates your projects to the next level.
         </p>
       </div>

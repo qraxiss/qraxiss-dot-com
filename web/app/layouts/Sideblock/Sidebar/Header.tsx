@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 // Local Imports
-import Logo from "@/assets/appLogo.svg?react";
+import Logo from "@/assets/qraxLogo.svg?react";
 import LogoType from "@/assets/logotype.svg?react";
 import { Button } from "@/components/ui";
 import { useSidebarContext } from "@/app/contexts/sidebar/context";
@@ -18,7 +18,7 @@ export function Header() {
         <Link to="/">
           <Logo className="size-10 text-primary-600 dark:text-primary-400" />
         </Link>
-        <LogoType className="h-5 w-auto text-gray-800 dark:text-dark-50" />
+        <span className="text-xl font-semibold text-gray-800 dark:text-dark-50">qraxiss</span>
       </div>
       <div className="pt-5 xl:hidden">
         <Button

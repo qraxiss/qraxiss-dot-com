@@ -132,21 +132,21 @@ const Typography = () => {
                 I’m Derek, an astro-engineer based in Tattooine. I like to build
                 X-Wings at
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="font-semibold underline decoration-info decoration-2"
                 >
                   My Company, Inc
                 </a>
                 . Outside of work, I like to
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="font-semibold underline decoration-secondary decoration-2"
                 >
                   watch pod-racing
                 </a>
                 and have
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="decoration-primary font-semibold underline decoration-2"
                 >
                   light-saber
@@ -161,28 +161,28 @@ const Typography = () => {
               <p className="text-sm leading-6">
                 I’m Derek, an astro-engineer based in
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="font-semibold underline decoration-info decoration-wavy decoration-2"
                 >
                   Tattooine
                 </a>
                 . I like to build X-Wings at
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="font-semibold underline decoration-info decoration-double decoration-2"
                 >
                   My Company, Inc
                 </a>
                 . Outside of work, I like to
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="font-semibold underline decoration-secondary decoration-dotted decoration-2"
                 >
                   watch pod-racing
                 </a>
                 and have
                 <a
-                  href="https://tailux.piniastudio.com/"
+                  href="https://qraxiss.piniastudio.com/"
                   className="decoration-primary font-semibold underline decoration-dashed decoration-2"
                 >
                   light-saber

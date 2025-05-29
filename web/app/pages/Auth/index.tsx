@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 // Local Imports
-import Logo from "@/assets/appLogo.svg?react";
+import Logo from "@/assets/qraxLogo.svg?react";
 import { Button, Card, Checkbox, Input, InputErrorMsg } from "@/components/ui";
 import { useAuthContext } from "@/app/contexts/auth/context";
 import { AuthFormValues, schema } from "./schema";

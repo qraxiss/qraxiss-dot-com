@@ -7,7 +7,7 @@ import {
 import { Link } from "react-router";
 
 // Import Dependencies
-import Logo from "@/assets/appLogo.svg?react";
+import Logo from "@/assets/qraxLogo.svg?react";
 import DashboardMeet from "@/assets/illustrations/dashboard-meet.svg?react";
 import { Button, Checkbox, Input } from "@/components/ui";
 import { useThemeContext } from "@/app/contexts/theme/context";
@@ -29,7 +29,7 @@ export default function SignUpV2() {
         <div className="flex items-center gap-2">
           <Logo className="size-12" />
           <p className="dark:text-dark-100 text-xl font-semibold text-gray-800 uppercase">
-            tailux
+            qraxiss
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function SignUpV2() {
             <Logo className="mx-auto size-16 lg:hidden" />
             <div className="mt-4 lg:mt-0">
               <h2 className="dark:text-dark-100 text-2xl font-semibold text-gray-600">
-                Welcome To Tailux
+                Welcome To qraxiss
               </h2>
               <p className="dark:text-dark-300 text-gray-400">
                 Please sign up to continue
