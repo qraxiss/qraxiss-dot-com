@@ -1,1 +1,1 @@
-npx openapi-typescript-codegen --input ./apps/api/swagger.json --output ./apps/web/src/api --client axios
+npx openapi-typescript-codegen --input ./swagger.json --output ./web/api --client axios
