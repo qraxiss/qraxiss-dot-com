@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/prompts/API_GENERATION.md",
+                "file": "prompts/API_GENERATION.md",
                 "mode": "source",
                 "source": false
               },
@@ -182,8 +182,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ],
@@ -203,12 +203,13 @@
       "graph:Open graph view": false,
       "command-palette:Open command palette": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-full-calendar:Open Full Calendar": false,
-      "sample-plugin:Sample Plugin": false
+      "obsidian-full-calendar:Open Full Calendar": false
     }
   },
   "active": "d88648662bed6f11",
   "lastOpenFiles": [
+    "prompts/base/AFTER.md",
+    "prompts/API_GENERATION.md",
     "().md",
     "docs/prompts/API_GENERATION.md",
     "docs/prompts/base/AFTER.md",
@@ -239,9 +240,7 @@
     "docs/web",
     "docs/server",
     "docs/NESTJS_MODULES.md",
-    "docs/GENERATED_API.md",
     "docs",
-    "2025-05-30.md",
     "İş/Freelance/boilerplate/react-template",
     "İş/Freelance/boilerplate/nestjs-template",
     "İş/Freelance/Instagram Mail Collector/Çoklu Hesap Entegrasyonu",

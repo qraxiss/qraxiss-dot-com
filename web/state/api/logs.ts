@@ -37,14 +37,27 @@ export const logsApi = createApi({
                     }
                 }
             }
+        }),
+        testErrorLogs: builder.query({
+            queryFn: async function testErrorLogs(lines: number): Promise<{ data?: LogResponseDto, error?: any }> {
+                try {
+                    return {
+                        data: await LogsService.logsControllerTestErrorLogs(lines)
+                    }
+                } catch (error: any) {
+                    return {
+                        error
+                    }
+                }
+            }
         })
     }),
 });
 
-export const { useGetErrorLogsQuery, useGetOutputLogsQuery } = logsApi;
+export const { useGetErrorLogsQuery, useGetOutputLogsQuery, useTestErrorLogsQuery } = logsApi;
 export const logsPath = logsApi.reducerPath;
 export const logsReducer = logsApi.reducer;
 export const logsMiddleware = logsApi.middleware;
-export const { getErrorLogs, getOutputLogs } = logsApi.endpoints;
+export const { getErrorLogs, getOutputLogs, testErrorLogs } = logsApi.endpoints;
 
 export default logsApi;

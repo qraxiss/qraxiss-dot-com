@@ -94,6 +94,42 @@
         ]
       }
     },
+    "/logs/test-error-logs/{lines}": {
+      "get": {
+        "operationId": "LogsController_testErrorLogs",
+        "parameters": [
+          {
+            "name": "lines",
+            "required": true,
+            "in": "path",
+            "description": "Number of error log lines to retrieve",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT-auth": []
+          }
+        ],
+        "tags": [
+          "logs"
+        ]
+      }
+    },
     "/logs/output/{lines}": {
       "get": {
         "operationId": "LogsController_getOutputLogs",
