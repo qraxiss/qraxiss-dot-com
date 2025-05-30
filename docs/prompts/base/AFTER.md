@@ -2,11 +2,11 @@
 
 ## Context
 
-This prompt runs after every codebase change to ensure code quality and proper version control.
+This prompt runs after every change.
 
 ## Task
 
-When you complete any code changes, automatically follow these steps:
+When you complete any changes, automatically follow these steps:
 
 ### 1. Git Commit
 

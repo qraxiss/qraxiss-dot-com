@@ -1,6 +1,6 @@
 # Redux API Implementation Prompt
 
-> **IMPORTANT NOTE:** After completing this prompt, read [[AFTER]] -> obsidian/docs/base/AFTER.md.
+> **IMPORTANT NOTE:** After completing this prompt, read [[AFTER]]
 
 ## Context
 
