@@ -16,8 +16,37 @@
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
+          },
+          {
+            "id": "a1ba9fbcff6f99c1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/web/PAGES.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PAGES"
+            }
+          },
+          {
+            "id": "d88648662bed6f11",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "qraxiss-dot-com.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "qraxiss-dot-com"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -178,8 +207,33 @@
       "sample-plugin:Sample Plugin": false
     }
   },
-  "active": "1a664fcaa7fb8a48",
+  "active": "d88648662bed6f11",
   "lastOpenFiles": [
+    "docs/server/STATUS.md",
+    "docs/web/PAGES.md",
+    "docs/web/I18N.md",
+    "docs/web/HOOKS.md",
+    "docs/web/COMPONENTS.md",
+    "docs/common/API.md",
+    "docs/common/SSR.md",
+    "docs/common",
+    "docs/shared/API.md",
+    "docs/web/STATE.md",
+    "docs/web/STYLES.md",
+    "docs/web/TYPES.md",
+    "docs/web/UTILS.md",
+    "docs/web/API.md",
+    "qraxiss-dot-com.md",
+    "docs/shared",
+    "docs/CLAUDE.md",
+    "CLAUDE.md",
+    "docs/server/AUTH.md",
+    "docs/web-directory-documentation.md",
+    "docs/web",
+    "docs/server",
+    "docs/NESTJS_MODULES.md",
+    "docs/GENERATED_API.md",
+    "docs",
     "2025-05-30.md",
     "Welcome.md",
     "İş/Freelance/boilerplate/nestjs-template/nestjs-template.md",
@@ -188,34 +242,9 @@
     "İş/Freelance/boilerplate/react-template",
     "İş/Freelance/boilerplate/nestjs-template",
     "İş/Freelance/boilerplate/boilerplate.md",
-    "İş/Freelance/Trading View Binance/Trading View Binance.md",
-    "İş/Freelance/Trading View Binance/Stop Price Göreceli Hesap.md",
-    "İş/Freelance/Trading View Binance/Pozisyon Business Logic.md",
-    "İş/Freelance/Trading View Binance/Hesaplara Giriş Yap.md",
-    "İş/Freelance/Trading View Binance/API Keyleri al..md",
-    "İş/Freelance/Trading View Binance/2025-03-12 Çoklu Hesap Optimizasyonu.md",
     "İş/Freelance/Instagram Mail Collector/Çoklu Hesap Entegrasyonu",
-    "İş/Freelance/Instagram Mail Collector/Tailux teması entegrasyonu.md",
-    "İş/Freelance/Instagram Mail Collector/Instagram Mail Collector.md",
     "İş/Freelance/boilerplate",
     "İş/Freelance/Trading View Binance",
-    "İş/Freelance/Instagram Mail Collector",
-    "İş/Freelance/Freelance.md",
-    "İş/İş.md",
-    "İş/Freelance",
-    "İş",
-    "Personal/Personal.md",
-    "Personal/2025-03-29 Mısır Hurghada.md",
-    "Personal",
-    "Okul/İşaret ve Sistemler/İşaret ve Sistemler.md",
-    "Okul/İşaret ve Sistemler/Sunumlar/bolum4_Sistemler.pdf",
-    "Okul/İşaret ve Sistemler/Sunumlar/Sunumlar.md",
-    "Okul/İşaret ve Sistemler/Kavramlar/Sıfır Durum.md",
-    "Okul/İşaret ve Sistemler/Kavramlar/Kavramlar.md",
-    "Okul/İşaret ve Sistemler/Kavramlar/Diot.md",
-    "Okul/İşaret ve Sistemler/Kavramlar/Devrenin Matematiksel Modeli.md",
-    "Okul/İşaret ve Sistemler/2025-03-10/ders notu.md",
-    "Okul/İşaret ve Sistemler/2025-03-10/2025-03-10.md",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel2.jpg",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel1.jpg",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/槦aret ve sistemer vize sorular/M16.jpeg",
