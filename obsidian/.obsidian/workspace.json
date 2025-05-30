@@ -37,20 +37,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/common/API_GENERATION.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "API_GENERATION"
-            }
-          },
-          {
-            "id": "6b3822ade4e34387",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "docs/prompts/API_GENERATION.md",
                 "mode": "source",
                 "source": false
@@ -60,7 +46,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -221,13 +207,16 @@
       "sample-plugin:Sample Plugin": false
     }
   },
-  "active": "6b3822ade4e34387",
+  "active": "d88648662bed6f11",
   "lastOpenFiles": [
-    "docs/common/API_GENERATION.md",
+    "docs/prompts/base/AFTER.md",
     "docs/prompts/API_GENERATION.md",
-    "docs/common/SSR.md",
-    "docs/prompts",
+    "docs/prompts/base/BEFORE.md",
     "qraxiss-dot-com.md",
+    "docs/prompts/base",
+    "docs/prompts",
+    "docs/common/API_GENERATION.md",
+    "docs/common/SSR.md",
     "docs/server/STATUS.md",
     "docs/web/PAGES.md",
     "docs/web/I18N.md",
@@ -253,12 +242,9 @@
     "docs",
     "2025-05-30.md",
     "Welcome.md",
-    "İş/Freelance/boilerplate/nestjs-template/nestjs-template.md",
-    "İş/Freelance/boilerplate/react-template/react-template.md",
     "İş/Freelance/boilerplate/react-template",
     "İş/Freelance/boilerplate/nestjs-template",
     "İş/Freelance/Instagram Mail Collector/Çoklu Hesap Entegrasyonu",
-    "İş/Freelance/boilerplate",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel2.jpg",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel1.jpg",
     "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/槦aret ve sistemer vize sorular/M16.jpeg",

@@ -1,5 +1,7 @@
 # Redux API Implementation Prompt
 
+> **Note:** After completing this prompt, run [[base/AFTER]] to commit changes and run code quality checks.
+
 ## Context
 
 You are working with a NestJS backend and React frontend that uses Redux Toolkit Query (RTK Query) for state management. The system generates TypeScript API clients from Swagger/OpenAPI specifications.
