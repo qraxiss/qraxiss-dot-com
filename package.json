@@ -21,7 +21,10 @@
     "generate": "chmod +x ./scripts/axios-generator.sh && ./scripts/axios-generator.sh",
     "change-name": "chmod +x ./scripts/change-name.sh && ./scripts/change-name.sh",
     "nginx": "chmod +x ./scripts/nginx.sh && ./scripts/nginx.sh",
-    "create-db": "chmod +x ./scripts/create-db.sh && ./scripts/create-db.sh"
+    "create-db": "chmod +x ./scripts/create-db.sh && ./scripts/create-db.sh",
+    "claude": "claude && clear && yarn claude",
+    "create-segment": "node ./scripts/create-segment.js",
+    "create-route": "node ./scripts/create-route.js"
   },
   "dependencies": {
     "@fastify/vite": "^6.0.6",
