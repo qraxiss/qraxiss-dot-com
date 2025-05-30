@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "f10aff551554addc",
+    "type": "split",
+    "children": [
+      {
+        "id": "8318d8f54ab63dd9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1a664fcaa7fb8a48",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bc7e2b9f542d6f75",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b2a65825701c8c0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c942f400c9765f9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c593d00261112cf5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#task",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2a83c2ce51d5bf92",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "2977f7d2c11dd672",
+    "type": "split",
+    "children": [
+      {
+        "id": "f21688dadbf866f8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75c52077c478a82d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Folders.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Folders"
+            }
+          },
+          {
+            "id": "1cd268c20b51178d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Folders.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Folders"
+            }
+          },
+          {
+            "id": "0e0b4243225dd10a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2804b99c1bd48134",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Folders.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Folders"
+            }
+          },
+          {
+            "id": "ddd07c1c7ecabdf1",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "graph:Open graph view": false,
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "sample-plugin:Sample Plugin": false
+    }
+  },
+  "active": "1a664fcaa7fb8a48",
+  "lastOpenFiles": [
+    "2025-05-30.md",
+    "Welcome.md",
+    "İş/Freelance/boilerplate/nestjs-template/nestjs-template.md",
+    "İş/Freelance/boilerplate/react-template/react-template.md",
+    "İş/Freelance/Instagram Mail Collector/Çoklu Hesap Entegrasyonu/Çoklu Hesap Entegrasyonu.md",
+    "İş/Freelance/boilerplate/react-template",
+    "İş/Freelance/boilerplate/nestjs-template",
+    "İş/Freelance/boilerplate/boilerplate.md",
+    "İş/Freelance/Trading View Binance/Trading View Binance.md",
+    "İş/Freelance/Trading View Binance/Stop Price Göreceli Hesap.md",
+    "İş/Freelance/Trading View Binance/Pozisyon Business Logic.md",
+    "İş/Freelance/Trading View Binance/Hesaplara Giriş Yap.md",
+    "İş/Freelance/Trading View Binance/API Keyleri al..md",
+    "İş/Freelance/Trading View Binance/2025-03-12 Çoklu Hesap Optimizasyonu.md",
+    "İş/Freelance/Instagram Mail Collector/Çoklu Hesap Entegrasyonu",
+    "İş/Freelance/Instagram Mail Collector/Tailux teması entegrasyonu.md",
+    "İş/Freelance/Instagram Mail Collector/Instagram Mail Collector.md",
+    "İş/Freelance/boilerplate",
+    "İş/Freelance/Trading View Binance",
+    "İş/Freelance/Instagram Mail Collector",
+    "İş/Freelance/Freelance.md",
+    "İş/İş.md",
+    "İş/Freelance",
+    "İş",
+    "Personal/Personal.md",
+    "Personal/2025-03-29 Mısır Hurghada.md",
+    "Personal",
+    "Okul/İşaret ve Sistemler/İşaret ve Sistemler.md",
+    "Okul/İşaret ve Sistemler/Sunumlar/bolum4_Sistemler.pdf",
+    "Okul/İşaret ve Sistemler/Sunumlar/Sunumlar.md",
+    "Okul/İşaret ve Sistemler/Kavramlar/Sıfır Durum.md",
+    "Okul/İşaret ve Sistemler/Kavramlar/Kavramlar.md",
+    "Okul/İşaret ve Sistemler/Kavramlar/Diot.md",
+    "Okul/İşaret ve Sistemler/Kavramlar/Devrenin Matematiksel Modeli.md",
+    "Okul/İşaret ve Sistemler/2025-03-10/ders notu.md",
+    "Okul/İşaret ve Sistemler/2025-03-10/2025-03-10.md",
+    "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel2.jpg",
+    "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/g攔sel1.jpg",
+    "Okul/İşaret ve Sistemler/İşaret ve Sistemler 1/槦aret ve Sistemler/槦aret ve sistemer vize sorular/M16.jpeg",
+    "Untitled.canvas",
+    "Untitled.canvas 17-06-10-793.canvas",
+    "Untitled.canvas 15-25-41-523.canvas",
+    "Untitled 1.canvas"
+  ]
+}
