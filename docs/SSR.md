@@ -9,24 +9,23 @@ This document explains how SSR works in this full-stack application with NestJS 
 │                   NestJS + Fastify                  │
 │                    (Port: 3000)                     │
 │                                                     │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────┐ │
-│  │ WebModule   │  │ AuthModule   │  │ LogsModule│ │
-│  │             │  │              │  │           │ │
-│  │ /web/*      │  │ /api/auth/*  │  │ /api/logs │ │
-│  └──────┬──────┘  └──────────────┘  └───────────┘ │
-│         │                                           │
-│         ▼                                           │
-│  ┌─────────────────────────────────────────────┐   │
-│  │           FrontEndInterceptor               │   │
-│  │  Intercepts Page responses for SSR          │   │
-│  └──────────────────┬──────────────────────────┘   │
+│  ┌────────────────────────────────────────────────┐ │
+│  │             WebModule                          │ │
+│  │                /web/*                          │ │
+│  └──────────────────┬─────────────────────────────┘ │
 │                     │                               │
 │                     ▼                               │
-│  ┌─────────────────────────────────────────────┐   │
-│  │            FastifyVite Plugin               │   │
-│  │  - Development: Hot Module Replacement      │   │
-│  │  - Production: Pre-built SSR bundles        │   │
-│  └──────────────────┬──────────────────────────┘   │
+│  ┌─────────────────────────────────────────────┐    │
+│  │           FrontEndInterceptor               │    │
+│  │  Intercepts Page responses for SSR          │    │
+│  └──────────────────┬──────────────────────────┘    │
+│                     │                               │
+│                     ▼                               │
+│  ┌─────────────────────────────────────────────┐    │
+│  │            FastifyVite Plugin               │    │
+│  │  - Development: Hot Module Replacement      │    │
+│  │  - Production: Pre-built SSR bundles        │    │
+│  └──────────────────┬──────────────────────────┘    │
 │                     │                               │
 └─────────────────────┼───────────────────────────────┘
                       │
@@ -40,15 +39,18 @@ This document explains how SSR works in this full-stack application with NestJS 
 ## Core Components
 
 ### 1. Page Class (`src/web/page.ts`)
+
 ```typescript
 export class Page {
     constructor(public readonly props: Record<string, any> = {}) {}
 }
 ```
+
 - Simple value object that signals SSR rendering
 - Carries props from backend to frontend
 
 ### 2. WebController (`src/web/web.controller.ts`)
+
 ```typescript
 @Controller('web')
 export class WebController {
@@ -63,6 +65,7 @@ export class WebController {
     }
 }
 ```
+
 - Maps routes to Page responses
 - Can pass data through props
 - Catch-all route for client-side routing
@@ -70,6 +73,7 @@ export class WebController {
 ### 3. WebModule Configuration (`src/web/web.module.ts`)
 
 #### FastifyVite Configuration
+
 ```typescript
 export const configureFrontEnd = async (adapter: FastifyAdapter, config?: Configuration) => {
     await adapter.register(FastifyVite, {
@@ -111,6 +115,7 @@ export const configureFrontEnd = async (adapter: FastifyAdapter, config?: Config
 ```
 
 #### FrontEndInterceptor
+
 ```typescript
 @Injectable()
 export class FrontEndInterceptor implements NestInterceptor {
@@ -134,6 +139,7 @@ export class FrontEndInterceptor implements NestInterceptor {
 ### 4. Frontend Entry Points
 
 #### Server Entry (`web/entry-server.ts`)
+
 ```typescript
 import { render as preactRender } from 'preact-render-to-string';
 import { createApp } from './base.js';
@@ -157,6 +163,7 @@ export async function render({ props, url }: EntryConfig) {
 ```
 
 #### Client Entry (`web/entry-client.ts`)
+
 ```typescript
 import { hydrate } from 'preact';
 import { createApp } from './base.js';
@@ -173,6 +180,7 @@ hydrate(
 ```
 
 #### Base App (`web/base.tsx`)
+
 ```typescript
 export const createApp = ({ url, props }: Config) => {
     // Remove /web prefix for route matching
@@ -233,19 +241,22 @@ export const createApp = ({ url, props }: Config) => {
 ## Key Features
 
 ### Devalue Integration
+
 - **Purpose**: Safe state serialization
-- **Benefits**: 
+- **Benefits**:
   - Handles circular references
   - Prevents XSS attacks
   - Smaller than JSON.stringify
   - Preserves Date, RegExp, Map, Set types
 
 ### Preact for SSR
+
 - **Why Preact**: Faster server-side rendering
 - **Compatibility**: Works with React components
 - **Size**: Smaller runtime overhead
 
 ### Error Handling
+
 ```typescript
 try {
     const result = await render({ url: req.originalUrl, props });
@@ -260,12 +271,14 @@ try {
 ### Development vs Production
 
 #### Development Mode
+
 - Hot Module Replacement enabled
 - Vite serves modules directly
 - Source maps available
 - No build step required
 
 #### Production Mode
+
 - Pre-built SSR bundles
 - Optimized for performance
 - Minified output
@@ -274,6 +287,7 @@ try {
 ## Route Management
 
 ### Backend Routes
+
 ```typescript
 // Specific routes with data
 @Get('dashboards/sales')
@@ -295,6 +309,7 @@ catchAll() {
 ```
 
 ### Frontend Routes (`web/routes.ts`)
+
 ```typescript
 const routes = [
     {
@@ -310,6 +325,7 @@ const routes = [
 ## Build Process
 
 ### Development
+
 ```bash
 yarn start:dev
 # - Starts NestJS with nodemon
@@ -319,6 +335,7 @@ yarn start:dev
 ```
 
 ### Production Build
+
 ```bash
 # Build frontend SSR bundle
 cd web
@@ -331,6 +348,7 @@ yarn build
 ```
 
 ### Production Structure
+
 ```
 web/dist/
 ├── client/          # Client-side assets
@@ -343,6 +361,7 @@ web/dist/
 ## Best Practices
 
 ### 1. Props Passing
+
 ```typescript
 // Backend: Pass serializable data only
 return new Page({ 
@@ -357,6 +376,7 @@ function Dashboard({ pageProps }) {
 ```
 
 ### 2. SSR-Safe Code
+
 ```typescript
 // Use conditional rendering for client-only code
 if (typeof window !== 'undefined') {
@@ -370,10 +390,12 @@ useEffect(() => {
 ```
 
 ### 3. Provider Setup
+
 - SSR includes: Theme, Locale, Breakpoint, Sidebar providers
 - Client adds: Redux, Auth providers (need client initialization)
 
 ### 4. Performance
+
 - Keep initial props small
 - Lazy load heavy components
 - Use streaming SSR for large pages (future enhancement)
@@ -381,6 +403,7 @@ useEffect(() => {
 ## Common Issues & Solutions
 
 ### Issue: Component not SSR-compatible
+
 ```typescript
 // Solution: Lazy load with client-only rendering
 const Map = lazy(() => import('./Map'));
@@ -395,6 +418,7 @@ function Page() {
 ```
 
 ### Issue: Hydration mismatch
+
 ```typescript
 // Ensure consistent rendering
 const [mounted, setMounted] = useState(false);
@@ -404,6 +428,7 @@ return <div>{mounted ? clientOnlyContent : serverContent}</div>;
 ```
 
 ### Issue: Missing styles in SSR
+
 ```typescript
 // Import CSS in entry-server.ts
 import "simplebar-react/dist/simplebar.min.css";
@@ -413,17 +438,20 @@ import "./styles/index.css";
 ## Debugging
 
 ### Check SSR Output
+
 ```bash
 curl http://localhost:3000/web/dashboard
 # View raw HTML with hydration state
 ```
 
 ### Monitor SSR Logs
+
 - Custom SSR logger mimics NestJS format
 - Check for `[SSR Error]` in console
 - Fastify request hooks add timing info
 
 ### Development Tools
+
 - React DevTools work after hydration
 - Vite HMR preserves state during development
 - Source maps available in dev mode
