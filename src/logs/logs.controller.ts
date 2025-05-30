@@ -26,21 +26,6 @@ export class LogsController {
     }
 
     @JwtAuth()
-    @Get('test-error-logs/:lines')
-    @ApiParam({
-        name: 'lines',
-        type: Number,
-        description: 'Number of error log lines to retrieve',
-    })
-    @ApiResponse({
-        status: 200,
-        type: LogResponseDto,
-    })
-    async testErrorLogs(@Param('lines') lines: number) {
-        return await safeRun(this.readLastLines('src/logs/app-err.log', lines));
-    }
-
-    @JwtAuth()
     @Get('output/:lines')
     @ApiParam({
         name: 'lines',

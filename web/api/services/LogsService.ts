@@ -24,22 +24,6 @@ export class LogsService {
         });
     }
     /**
-     * @param lines Number of error log lines to retrieve
-     * @returns LogResponseDto
-     * @throws ApiError
-     */
-    public static logsControllerTestErrorLogs(
-        lines: number,
-    ): CancelablePromise<LogResponseDto> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/logs/test-error-logs/{lines}',
-            path: {
-                'lines': lines,
-            },
-        });
-    }
-    /**
      * @param lines Number of output log lines to retrieve
      * @returns LogResponseDto
      * @throws ApiError
