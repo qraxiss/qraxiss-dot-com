@@ -17,4 +17,3 @@ export type { UserDto } from './models/UserDto';
 
 export { AuthService } from './services/AuthService';
 export { LogsService } from './services/LogsService';
-export { WebService } from './services/WebService';
