@@ -1,6 +1,6 @@
 # Redux API Implementation Prompt
 
-> **Note:** After completing this prompt, run [[base/AFTER]] to commit changes and run code quality checks.
+> **IMPORTANT NOTE:** After completing this prompt, read [[AFTER]] -> obsidian/docs/base/AFTER.md.
 
 ## Context
 
@@ -13,11 +13,13 @@ When the user says "I added an API" or "I added new endpoints", automatically fo
 ### Automatic Workflow
 
 1. **API Generation**
+
    ```bash
    yarn generate
    ```
 
 2. **Check Changes with Git**
+
    ```bash
    git diff web/api/services/
    git diff web/api/models/
@@ -35,6 +37,7 @@ When the user says "I added an API" or "I added new endpoints", automatically fo
 If a new API service was created (e.g., `ProductsService`):
 
 1. **Create RTK Query Slice** - `web/state/api/[serviceName].ts`:
+
    ```typescript
    import { createApi } from '@reduxjs/toolkit/query/react';
    import { [ServiceName]Service, [ResponseTypes], [RequestTypes] } from '@/api';
@@ -81,6 +84,7 @@ Given: "I added getProducts and createProduct functions to ProductsController"
 You would:
 
 1. Create `web/state/api/products.ts`:
+
 ```typescript
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { ProductsService, ProductDto, CreateProductDto } from '@/api';
@@ -128,6 +132,7 @@ export const {
 ```
 
 2. Update `web/state/reducer.ts`:
+
 ```typescript
 // Add import
 import { productsApi } from './api/products';
@@ -140,6 +145,7 @@ const rootReducer = {
 ```
 
 3. Update `web/state/store.ts`:
+
 ```typescript
 // Create middleware variable
 const productsMiddleware = productsApi.middleware;
@@ -162,11 +168,13 @@ const productsMiddleware = productsApi.middleware;
 ## Usage
 
 User can simply say:
+
 - "I added an API"
 - "I added new endpoints"
 - "I added new functions to backend"
 
 You will automatically:
+
 1. Run `yarn generate`
 2. Check what changed with git diff
 3. Find new services or functions
@@ -178,6 +186,7 @@ You will automatically:
 **User:** "I added a new products API to backend"
 
 **You will:**
+
 ```bash
 # 1. Generate APIs
 yarn generate
