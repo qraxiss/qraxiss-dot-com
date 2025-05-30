@@ -39,6 +39,21 @@ export class LogsController {
         return await safeRun(this.readLastLines('src/logs/app-out.log', lines));
     }
 
+    @JwtAuth()
+    @Get('output/:lines')
+    @ApiParam({
+        name: 'lines',
+        type: Number,
+        description: 'Number of output log lines to retrieve',
+    })
+    @ApiResponse({
+        status: 200,
+        type: LogResponseDto,
+    })
+    async getLogsTestOutput(@Param('lines') lines: number) {
+        return await safeRun(this.readLastLines('src/logs/app-out.log', lines));
+    }
+
     private async readLastLines(
         filePath: string,
         lines: number
