@@ -18,10 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "generate": "chmod +x ./scripts/axios-generator.sh && ./scripts/axios-generator.sh",
-    "change-name": "chmod +x ./scripts/change-name.sh && ./scripts/change-name.sh",
-    "nginx": "chmod +x ./scripts/nginx.sh && ./scripts/nginx.sh",
-    "create-db": "chmod +x ./scripts/create-db.sh && ./scripts/create-db.sh",
+    "generate": "node ./scripts/axios-generator.js",
+    "nginx": "node ./scripts/nginx.js",
+    "create-db": "node ./scripts/create-db.js",
     "claude": "claude && clear && yarn claude",
     "create-segment": "node ./scripts/create-segment.js",
     "create-route": "node ./scripts/create-route.js"
