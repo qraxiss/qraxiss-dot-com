@@ -5,6 +5,7 @@
 You are working with a NestJS backend and React frontend that uses Redux Toolkit Query (RTK Query) for state management. The system generates TypeScript API clients from Swagger/OpenAPI specifications.
 
 ## Related Documentation
+
 - [[API_GENERATION]] (common) - Technical details about API generation
 - [[STATE]] - Redux state management patterns
 - [[TYPES]] - TypeScript type definitions
@@ -133,9 +134,7 @@ export const {
     useGetProductsQuery,
     useCreateProductMutation 
 } = productsApi;
-```
-
-2. Update `web/state/reducer.ts`:
+```2. Update `web/state/reducer.ts`:
 
 ```typescript
 // Add import
@@ -146,9 +145,7 @@ const rootReducer = {
     // ... existing reducers
     [productsApi.reducerPath]: productsApi.reducer,
 };
-```
-
-3. Update `web/state/store.ts`:
+```3. Update `web/state/store.ts`:
 
 ```typescript
 // Create middleware variable

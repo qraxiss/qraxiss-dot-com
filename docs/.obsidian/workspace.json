@@ -4,49 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "8318d8f54ab63dd9",
+        "id": "26d908de607abe12",
         "type": "tabs",
         "children": [
           {
-            "id": "1a664fcaa7fb8a48",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
-            }
-          },
-          {
-            "id": "a1ba9fbcff6f99c1",
+            "id": "849b3fba081f44e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/web/PAGES.md",
+                "file": "prompts/API_GENERATION.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "PAGES"
-            }
-          },
-          {
-            "id": "d88648662bed6f11",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "todo.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "todo"
+              "title": "API_GENERATION"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -206,14 +181,19 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "d88648662bed6f11",
+  "active": "849b3fba081f44e8",
   "lastOpenFiles": [
-    "web/COMPONENTS.md",
-    "web/PAGES.md",
     "prompts/PAGE_GENERATION.md",
-    "todo.md",
-    "prompts/API_GENERATION.md",
     "prompts/base/AFTER.md",
+    "web/UTILS.md",
+    "web/TYPES.md",
+    "web/STATE.md",
+    "web/I18N.md",
+    "web/PAGES.md",
+    "server/STATUS.md",
+    "todo.md",
+    "web/COMPONENTS.md",
+    "prompts/API_GENERATION.md",
     "().md",
     "docs/prompts/API_GENERATION.md",
     "docs/prompts/base/AFTER.md",
@@ -232,12 +212,7 @@
     "docs/common",
     "docs/shared/API.md",
     "docs/web/STATE.md",
-    "docs/web/STYLES.md",
-    "docs/web/TYPES.md",
-    "docs/web/UTILS.md",
-    "docs/web/API.md",
     "docs/shared",
-    "docs/CLAUDE.md",
     "docs/web",
     "docs/server",
     "docs",

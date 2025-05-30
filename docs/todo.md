@@ -17,6 +17,7 @@
 ## 📚 Documentation Structure
 
 ### Web Documentation
+
 - [[COMPONENTS]] - UI component reference
 - [[HOOKS]] - Custom React hooks
 - [[I18N]] - Internationalization setup
@@ -27,16 +28,19 @@
 - [[UTILS]] - Utility functions
 
 ### Common Documentation
+
 - [[API_GENERATION]] - API client generation workflow
 - [[SSR]] - Server-side rendering architecture
 - [[API]] - (Currently empty)
 
 ### Prompts Documentation
+
 - [[API_GENERATION]] (prompts) - Automated API integration
 - [[PAGE_GENERATION]] - Automated page creation
 - [[AFTER]] - Post-change workflow
 
 ### Server Documentation
+
 - [[STATUS]] - (Currently empty - needs documentation)
 
 ## 🔗 Semantic Connections

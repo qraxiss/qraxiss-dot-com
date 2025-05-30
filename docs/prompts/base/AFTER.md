@@ -5,6 +5,7 @@
 This prompt runs after every change.
 
 ## Related Documentation
+
 - [[API_GENERATION]] - When following API generation workflow
 - [[PAGE_GENERATION]] - When following page generation workflow
 
@@ -39,8 +40,7 @@ When you complete any changes, automatically follow these steps:
 
 ## Example Commit Message
 
-```
-feat: implement products API with Redux integration (API_GENERATION prompt)
+```feat: implement products API with Redux integration (API_GENERATION prompt)
 
 - Added ProductsService API client
 - Created Redux RTK Query slice for products

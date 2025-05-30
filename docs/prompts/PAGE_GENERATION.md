@@ -5,6 +5,7 @@
 You are working with a NestJS backend and React frontend. The system has scripts to automatically generate pages and routes within segments. Pages use TypeScript and React components with Tailwind CSS for styling.
 
 ## Related Documentation
+
 - [[PAGES]] - How pages are structured and organized
 - [[COMPONENTS]] - Components used in pages
 - [[SSR]] - Server-side rendering for pages
@@ -81,9 +82,7 @@ You would:
 
 ```bash
 yarn create-route settings user-profile
-```
-
-2. The script creates:
+```2. The script creates:
 
 `web/app/pages/settings/user-profile/index.tsx`:
 
@@ -100,9 +99,7 @@ export default function UserProfile() {
     </Page>
   );
 }
-```
-
-3. Updates navigation segment to include:
+```3. Updates navigation segment to include:
 
 ```typescript
 {
