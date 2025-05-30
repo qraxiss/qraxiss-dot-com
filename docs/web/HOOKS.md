@@ -2,6 +2,13 @@
 
 This document provides a comprehensive reference for all custom hooks in the `web/hooks` directory. It's designed as a quick lookup guide to help manage context efficiently.
 
+## Related Documentation
+- [[COMPONENTS]] - Components that use these hooks
+- [[PAGES]] - Page-level hook usage examples
+- [[STATE]] - State management hooks and patterns
+- [[UTILS]] - Utility functions used by hooks
+- [[TYPES]] - TypeScript types for hook parameters and returns
+
 ## UI/DOM Hooks
 
 ### useBoxPosition
@@ -340,16 +347,18 @@ return <div ref={mergedRef} />;
 
 ## Common Patterns
 
-1. **SSR Safety**: Many hooks include SSR checks (`typeof window !== 'undefined'`)
+1. **SSR Safety**: Many hooks include SSR checks (`typeof window !== 'undefined'`) - see [[SSR]] for SSR considerations
 2. **Cleanup**: Automatic cleanup in useEffect returns
-3. **Type Safety**: Full TypeScript support with generics
+3. **Type Safety**: Full TypeScript support with generics - see [[TYPES]] for type definitions
 4. **Performance**: Debouncing, memoization where appropriate
 5. **Flexibility**: Options parameters for customization
+6. **Form Integration**: Works with React Hook Form - see [[PAGES]] for form examples
 
 ## Usage Tips
 
 - Import hooks individually for better tree-shaking
-- Check SSR compatibility when using browser-specific hooks
+- Check SSR compatibility when using browser-specific hooks (see [[SSR]])
 - Use performance hooks (debounce) for expensive operations
 - Combine hooks for complex behaviors
-- Refer to example usage in component demos
+- Refer to example usage in component demos (see [[COMPONENTS]])
+- Use with [[UTILS]] for additional functionality

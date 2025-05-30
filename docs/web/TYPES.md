@@ -2,6 +2,14 @@
 
 This document provides a comprehensive reference for TypeScript type definitions in the `web/@types` directory.
 
+## Related Documentation
+- [[STATE]] - How types integrate with state management
+- [[COMPONENTS]] - Component type definitions
+- [[API_GENERATION]] - Generated API types
+- [[PAGES]] - Page-level type usage
+- [[HOOKS]] - Hook type definitions
+- [[UTILS]] - Utility function types
+
 ## Directory Overview
 
 The @types directory contains custom TypeScript type definitions and interfaces:
@@ -388,8 +396,10 @@ type UserWithProfile = User & {
 2. **Avoid any**: Use unknown or generic types instead
 3. **Document complex types**: Add JSDoc comments for clarity
 4. **Export consistently**: Export types from index files
-5. **Maintain compatibility**: Ensure types match backend DTOs
+5. **Maintain compatibility**: Ensure types match backend DTOs (see [[API_GENERATION]])
 6. **Use enums sparingly**: Consider union types for better tree-shaking
+7. **Component types**: Follow patterns in [[COMPONENTS]]
+8. **State types**: Align with [[STATE]] management patterns
 
 ## Common Patterns
 

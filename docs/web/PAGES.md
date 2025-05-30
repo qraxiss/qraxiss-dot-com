@@ -2,6 +2,15 @@
 
 This document provides a comprehensive reference for all pages in the `web/app/pages` directory. It's designed as a quick lookup guide to help manage context efficiently.
 
+## Related Documentation
+- [[COMPONENTS]] - UI components used in pages
+- [[HOOKS]] - Custom hooks used by pages
+- [[STATE]] - State management patterns
+- [[I18N]] - Internationalization in pages
+- [[SSR]] - Server-side rendering for pages
+- [[TYPES]] - TypeScript types for pages
+- [[PAGE_GENERATION]] - Automated page generation workflow
+
 ## Apps Pages (`/app/pages/apps/`)
 
 ### AI Chat
@@ -283,22 +292,24 @@ This document provides a comprehensive reference for all pages in the `web/app/p
 
 ## Common Patterns
 
-1. **State Management**: Redux Toolkit with RTK Query
+1. **State Management**: Redux Toolkit with RTK Query (see [[STATE]])
 2. **Authentication**: JWT with auth guards
-3. **Forms**: React Hook Form + Yup validation
+3. **Forms**: React Hook Form + Yup validation (see [[HOOKS]] for form hooks)
 4. **Tables**: TanStack Table (React Table v8)
-5. **Charts**: ApexCharts integration
+5. **Charts**: ApexCharts integration (see [[HOOKS]] for useApexCharts)
 6. **Contexts**: Feature-specific providers
 7. **Routing**: React Router v7 with protected routes
-8. **i18n**: Multi-language support
-9. **SSR**: Server-side rendering support
+8. **i18n**: Multi-language support (see [[I18N]])
+9. **SSR**: Server-side rendering support (see [[SSR]])
 
 ## Usage Tips
 
-- Most pages use feature-specific contexts for state
-- Forms integrate with React Hook Form
-- Tables use TanStack Table with custom filters
+- Most pages use feature-specific contexts for state (see [[STATE]])
+- Forms integrate with React Hook Form (see [[HOOKS]] for form utilities)
+- Tables use TanStack Table with custom filters (see [[COMPONENTS]] for table components)
 - Dashboard pages often combine multiple chart types
 - App pages typically include sidebar navigation
 - Prototype pages showcase different layouts
-- All pages support dark mode via theme context
+- All pages support dark mode via theme context (see [[STYLES]] for theming)
+- Use [[UTILS]] for page-related utility functions
+- Follow [[TYPES]] for proper TypeScript usage

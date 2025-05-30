@@ -2,6 +2,13 @@
 
 This document provides a comprehensive reference for all components in the `web/components` directory. It's designed to be a quick lookup guide without full implementation details to help manage context efficiently.
 
+## Related Documentation
+- [[PAGES]] - How pages use these components
+- [[STYLES]] - Styling approach and Tailwind CSS integration
+- [[HOOKS]] - Custom React hooks used by components
+- [[TYPES]] - TypeScript type definitions for components
+- [[STATE]] - State management integration with components
+
 ## UI Components (`web/components/ui/`)
 
 ### Accordion
@@ -181,11 +188,11 @@ This document provides a comprehensive reference for all components in the `web/
 
 ## Common Patterns
 
-1. **Polymorphic Components**: Many accept `component` prop for custom elements
-2. **Context Usage**: Accordion, Pagination, Timeline use React Context
+1. **Polymorphic Components**: Many accept `component` prop for custom elements (see [[TYPES]] for polymorphic type definitions)
+2. **Context Usage**: Accordion, Pagination, Timeline use React Context (see [[STATE]] for context patterns)
 3. **Theme Integration**: Dark mode support via theme context
-4. **Tailwind CSS**: Primary styling approach
-5. **TypeScript**: Full type support
+4. **Tailwind CSS**: Primary styling approach (see [[STYLES]] for CSS architecture)
+5. **TypeScript**: Full type support (see [[TYPES]] for type definitions)
 6. **Accessibility**: Error messages, ARIA attributes
 7. **Responsive**: Mobile-friendly designs
 
@@ -194,5 +201,7 @@ This document provides a comprehensive reference for all components in the `web/
 - Import from specific paths for tree-shaking
 - Check component props files for detailed prop types
 - Many components support ref forwarding
-- Form components integrate with React Hook Form
+- Form components integrate with React Hook Form (see [[HOOKS]] for form hooks)
 - Table components work with TanStack Table
+- Use [[UTILS]] for component-related helper functions
+- Reference [[PAGES]] to see components in action

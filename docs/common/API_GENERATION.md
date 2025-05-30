@@ -4,6 +4,13 @@
 
 This document describes the automated API generation workflow that creates TypeScript API clients from Swagger/OpenAPI specifications and integrates them with Redux Toolkit Query (RTK Query) for state management.
 
+## Related Documentation
+- [[STATE]] - RTK Query integration and state management
+- [[TYPES]] - Generated TypeScript types
+- [[SSR]] - Server-side rendering with API calls
+- [[API_GENERATION]] (prompts) - Automated generation prompt
+- [[AFTER]] - Post-generation workflow
+
 ## Current Architecture
 
 ### 1. Swagger Generation
@@ -41,7 +48,7 @@ web/api/
 
 ### 3. Redux Integration
 
-API services are manually integrated with RTK Query:
+API services are manually integrated with RTK Query (see [[STATE]] for state management patterns):
 
 ```typescript
 // web/state/api/auth.ts
@@ -155,11 +162,12 @@ function UserProfile({ userId }) {
 
 ## Benefits
 
-1. **Type Safety**: Full TypeScript support from backend to frontend
+1. **Type Safety**: Full TypeScript support from backend to frontend (see [[TYPES]])
 2. **Automation**: No manual API integration required
 3. **Consistency**: Standardized API patterns
 4. **Developer Experience**: Auto-generated hooks and types
 5. **Maintainability**: Single source of truth (swagger.json)
+6. **SSR Support**: Works seamlessly with server-side rendering (see [[SSR]])
 
 ## Configuration
 

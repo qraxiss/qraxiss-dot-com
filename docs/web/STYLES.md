@@ -2,6 +2,13 @@
 
 This document provides a comprehensive reference for the styling architecture in the `web/styles` directory.
 
+## Related Documentation
+- [[COMPONENTS]] - How components use styles
+- [[PAGES]] - Page-level styling patterns
+- [[I18N]] - RTL styling considerations
+- [[TYPES]] - TypeScript types for styles
+- [[UTILS]] - Style-related utility functions
+
 ## Directory Overview
 
 The styles directory implements a layered CSS architecture using Tailwind CSS v4:
@@ -216,7 +223,7 @@ The styles directory implements a layered CSS architecture using Tailwind CSS v4
 - Typography settings
 
 ### Custom Utilities
-- Directional properties (RTL support)
+- Directional properties (RTL support - see [[I18N]])
 - Custom gradients
 - Shadow utilities
 - Transform helpers
@@ -272,6 +279,8 @@ The styles directory implements a layered CSS architecture using Tailwind CSS v4
 4. **Consider dark mode**: All custom styles should support theme switching
 5. **Mobile-first**: Design for mobile, enhance for desktop
 6. **Accessibility**: Ensure sufficient contrast and focus indicators
+7. **Component integration**: See [[COMPONENTS]] for component-specific styling
+8. **Type safety**: Use [[TYPES]] for style-related types
 
 ## Common Patterns
 

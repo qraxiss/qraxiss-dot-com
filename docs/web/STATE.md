@@ -2,6 +2,14 @@
 
 This document provides a comprehensive reference for state management in the `web/state` directory using Redux Toolkit and RTK Query.
 
+## Related Documentation
+- [[API_GENERATION]] - How API slices are generated
+- [[TYPES]] - TypeScript types for state
+- [[PAGES]] - How pages use state management
+- [[COMPONENTS]] - Component state integration
+- [[HOOKS]] - State-related hooks
+- [[SSR]] - Server-side state hydration
+
 ## Directory Overview
 
 The state directory implements centralized state management:
@@ -286,11 +294,11 @@ if (error) {
 
 ## Best Practices
 
-1. **Use RTK Query for API calls**: Automatic caching and synchronization
+1. **Use RTK Query for API calls**: Automatic caching and synchronization (see [[API_GENERATION]])
 2. **Tag-based invalidation**: Keep cache consistent
-3. **Type safety**: Use generated types from backend
-4. **Error boundaries**: Handle errors gracefully
-5. **Loading states**: Show appropriate UI feedback
+3. **Type safety**: Use generated types from backend (see [[TYPES]])
+4. **Error boundaries**: Handle errors gracefully (see [[COMPONENTS]])
+5. **Loading states**: Show appropriate UI feedback (see [[HOOKS]] for loading hooks)
 6. **Optimistic updates**: For better UX when appropriate
 
 ## Common Patterns
@@ -311,6 +319,8 @@ const onSubmit = form.handleSubmit((data) => {
 });
 ```
 
+See [[HOOKS]] for form-related hooks and [[PAGES]] for form page examples.
+
 ### Global Loading State
 ```typescript
 const isAnyQueryLoading = useSelector((state: RootState) => 
@@ -321,3 +331,5 @@ const isAnyQueryLoading = useSelector((state: RootState) =>
   )
 );
 ```
+
+For SSR considerations with Redux state, see [[SSR]].

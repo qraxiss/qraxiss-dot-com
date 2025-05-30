@@ -2,6 +2,15 @@
 
 This document explains how SSR works in this full-stack application with NestJS backend serving a React frontend through Fastify and Vite.
 
+## Related Documentation
+- [[PAGES]] - How pages implement SSR
+- [[COMPONENTS]] - SSR-compatible components
+- [[STATE]] - State hydration for SSR
+- [[I18N]] - i18n in SSR context
+- [[HOOKS]] - SSR-safe hooks
+- [[UTILS]] - SSR utility functions
+- [[API_GENERATION]] - API calls in SSR
+
 ## Architecture Overview
 
 ```
@@ -389,10 +398,12 @@ useEffect(() => {
 }, []);
 ```
 
+See [[HOOKS]] for SSR-safe hooks and [[UTILS]] for isServer utility.
+
 ### 3. Provider Setup
 
-- SSR includes: Theme, Locale, Breakpoint, Sidebar providers
-- Client adds: Redux, Auth providers (need client initialization)
+- SSR includes: Theme, Locale, Breakpoint, Sidebar providers (see [[I18N]] for locale provider)
+- Client adds: Redux, Auth providers (need client initialization) (see [[STATE]] for Redux provider)
 
 ### 4. Performance
 

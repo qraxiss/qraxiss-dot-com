@@ -9,6 +9,8 @@ Bu bir Next.js tabanlı full-stack web uygulaması projesidir. Hem frontend hem 
 EĞER SENİNLE DOĞRUDAN DOCS PAYLAŞILIRSA, örnek >> docs/prompts/API_GENERATION.md
 prompt'u uygula.
 
+EĞER DEĞİŞİKLİK YAPTIYSAN docs/prompts/base/AFTER.md'yi uygula.
+
 ### Obsidian Vault Yapısı
 
 Bu proje Obsidian ile birlikte kullanılmaktadır. Dokümantasyon `docs/` klasöründe bulunur ve Obsidian vault olarak yapılandırılmıştır.

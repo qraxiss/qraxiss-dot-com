@@ -4,6 +4,10 @@
 
 This prompt runs after every change.
 
+## Related Documentation
+- [[API_GENERATION]] - When following API generation workflow
+- [[PAGE_GENERATION]] - When following page generation workflow
+
 ## Task
 
 When you complete any changes, automatically follow these steps:

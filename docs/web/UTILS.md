@@ -2,6 +2,14 @@
 
 This document provides a comprehensive reference for all utility functions in the `web/utils` directory.
 
+## Related Documentation
+- [[COMPONENTS]] - How components use utilities
+- [[HOOKS]] - Hooks that use utility functions
+- [[PAGES]] - Page-level utility usage
+- [[TYPES]] - TypeScript types for utilities
+- [[SSR]] - SSR-related utilities
+- [[I18N]] - i18n utility functions
+
 ## Directory Overview
 
 The utils directory contains helper functions organized by category:
@@ -91,6 +99,7 @@ const [ThemeProvider, useTheme] = createSafeContext<ThemeType>(
 - **Constant**: `isServer: boolean`
 - **Purpose**: SSR check for server/client environment
 - **Value**: `typeof window === 'undefined'`
+- **See**: [[SSR]] for SSR implementation details
 
 ### jwt.ts
 - **Functions**:
@@ -211,7 +220,9 @@ const handler = createScopedKeydownHandler('modal', {
 ## Usage Tips
 
 - Import utilities directly for tree-shaking
-- Check SSR compatibility for DOM utilities
-- Use type-safe utilities like `createSafeContext`
+- Check SSR compatibility for DOM utilities (see [[SSR]])
+- Use type-safe utilities like `createSafeContext` (see [[TYPES]])
 - Leverage formatting utilities for consistent UI
 - Combine utilities for complex operations
+- See [[COMPONENTS]] for utility usage in components
+- See [[HOOKS]] for utilities used in custom hooks

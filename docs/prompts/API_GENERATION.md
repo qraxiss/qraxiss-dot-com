@@ -1,10 +1,14 @@
 # Redux API Implementation Prompt
 
-> **IMPORTANT NOTE:** After completing this prompt, read [[AFTER]]
-
 ## Context
 
 You are working with a NestJS backend and React frontend that uses Redux Toolkit Query (RTK Query) for state management. The system generates TypeScript API clients from Swagger/OpenAPI specifications.
+
+## Related Documentation
+- [[API_GENERATION]] (common) - Technical details about API generation
+- [[STATE]] - Redux state management patterns
+- [[TYPES]] - TypeScript type definitions
+- [[AFTER]] - Post-generation workflow to follow
 
 ## Task
 
@@ -164,6 +168,9 @@ const productsMiddleware = productsApi.middleware;
 - Use `builder.mutation` for POST/PUT/DELETE requests
 - Always wrap service calls in try-catch blocks
 - Export all generated hooks using the pattern: `use[FunctionName]Query` or `use[FunctionName]Mutation`
+- Follow [[STATE]] patterns for Redux integration
+- Ensure [[TYPES]] are properly imported
+- Apply [[AFTER]] workflow after completion
 
 ## Usage
 
