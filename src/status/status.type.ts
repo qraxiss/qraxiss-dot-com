@@ -1,4 +1,4 @@
-import { LocalError } from "./errors";
+import { LocalError } from './errors';
 
 export interface StatusType<T> {
     success: boolean;

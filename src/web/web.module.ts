@@ -111,7 +111,7 @@ export const configureFrontEnd = async (
                     const hydration = `<script>window.__INITIAL_STATE__ = ${uneval(hydrationState)};</script>`;
                     return {
                         element: template,
-                        title: 'test',
+                        title: metadata?.title || 'qraxiss',
                         hydration,
                     };
                 };

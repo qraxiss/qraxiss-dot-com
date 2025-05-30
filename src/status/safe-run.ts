@@ -13,7 +13,10 @@ export async function safeRun<T>(
         const executionTime = Date.now() - startTime;
 
         if (successMessage) {
-            Logger.log(`${successMessage(result)} +${executionTime}ms`, resource || "safeRun")
+            Logger.log(
+                `${successMessage(result)} +${executionTime}ms`,
+                resource || 'safeRun'
+            );
         }
         return {
             success: true,
@@ -34,22 +37,31 @@ export async function safeRun<T>(
             error: {
                 message: error?.message,
                 name: error?.name,
-                stack: error?.stack
-            }
+                stack: error?.stack,
+            },
         } as StatusType<T>;
     }
 }
 
-export function SafeRun<T>(resource?: string, successMessage?: (result: T) => string) {
+export function SafeRun<T>(
+    resource?: string,
+    successMessage?: (result: T) => string
+) {
     return function (
         target: any,
         propertyKey: string,
-        descriptor: PropertyDescriptor,
+        descriptor: PropertyDescriptor
     ): PropertyDescriptor {
         const originalMethod = descriptor.value;
 
-        descriptor.value = async function (...args: any[]): Promise<StatusType<T>> {
-            return await safeRun(await originalMethod.apply(this, args), resource, successMessage);
+        descriptor.value = async function (
+            ...args: any[]
+        ): Promise<StatusType<T>> {
+            return await safeRun(
+                await originalMethod.apply(this, args),
+                resource,
+                successMessage
+            );
         };
 
         return descriptor;

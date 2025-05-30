@@ -1,18 +1,6 @@
-import {
-    Controller,
-    Post,
-    UseGuards,
-    Request,
-    Body,
-    Get,
-} from '@nestjs/common';
+import { Controller, Post, Request, Body, Get } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
-import {
-    UserDto,
-    IsUserLoggedResponseDto,
-    LoginDto,
-    LoginResponseDto,
-} from './auth.dto';
+import { UserDto, IsUserLoggedResponseDto, LoginResponseDto } from './auth.dto';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuth } from 'src/auth/auth.decorator';
 import { safeRun, SafeRun } from 'src/status/safe-run';
@@ -32,7 +20,7 @@ export class AuthController {
         return await safeRun(
             this.authService.login(user),
             'NewLogin',
-            (loginDto) => `${user.email} is logged`
+            () => `${user.email} is logged`
         );
     }
 

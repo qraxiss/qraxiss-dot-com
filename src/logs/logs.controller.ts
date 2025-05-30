@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import * as fs from 'fs';
 import * as readline from 'readline';
 import { safeRun } from 'src/status/safe-run';
@@ -36,21 +36,6 @@ export class LogsController {
         type: LogResponseDto,
     })
     async getOutputLogs(@Param('lines') lines: number) {
-        return await safeRun(this.readLastLines('src/logs/app-out.log', lines));
-    }
-
-    @JwtAuth()
-    @Get('output/:lines')
-    @ApiParam({
-        name: 'lines',
-        type: Number,
-        description: 'Number of output log lines to retrieve',
-    })
-    @ApiResponse({
-        status: 200,
-        type: LogResponseDto,
-    })
-    async getLogsTestOutput(@Param('lines') lines: number) {
         return await safeRun(this.readLastLines('src/logs/app-out.log', lines));
     }
 

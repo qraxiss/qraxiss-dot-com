@@ -7,18 +7,17 @@ export class ErrorDto {
     @ApiProperty({ type: String })
     @IsString()
     @IsOptional()
-    message: string
+    message: string;
 
     @ApiProperty({ type: String })
     @IsString()
     @IsOptional()
-    name: string
-
+    name: string;
 
     @ApiProperty({ type: String })
     @IsString()
     @IsOptional()
-    stack: string
+    stack: string;
 }
 
 export class ResponseDto {
@@ -36,5 +35,3 @@ export class ResponseDto {
     @IsOptional()
     error: LocalError | null | undefined;
 }
-
-

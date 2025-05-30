@@ -8,7 +8,7 @@ export const escaped = {
     '\r': '\\r',
     '\t': '\\t',
     '\u2028': '\\u2028',
-    '\u2029': '\\u2029'
+    '\u2029': '\\u2029',
 };
 
 export class DevalueError extends Error {
@@ -19,7 +19,7 @@ export class DevalueError extends Error {
     constructor(message, keys) {
         super(message);
         this.name = 'DevalueError';
-        //@ts-ignore
+        //@ts-expect-error Adding custom path property to Error instance
         this.path = keys.join('');
     }
 }
@@ -42,7 +42,8 @@ export function is_plain_object(thing) {
     return (
         proto === Object.prototype ||
         proto === null ||
-        Object.getOwnPropertyNames(proto).sort().join('\0') === object_proto_names
+        Object.getOwnPropertyNames(proto).sort().join('\0') ===
+            object_proto_names
     );
 }
 
@@ -110,7 +111,9 @@ const is_identifier = /^[a-zA-Z_$][a-zA-Z_$0-9]*$/;
 
 /** @param {string} key */
 export function stringify_key(key) {
-    return is_identifier.test(key) ? '.' + key : '[' + JSON.stringify(key) + ']';
+    return is_identifier.test(key)
+        ? '.' + key
+        : '[' + JSON.stringify(key) + ']';
 }
 
 const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$';
@@ -166,11 +169,11 @@ export function uneval(value, replacer?) {
                     return;
 
                 case 'Array':
-                    /** @type {any[]} */ (thing).forEach((value, i) => {
-                    keys.push(`[${i}]`);
-                    walk(value);
-                    keys.pop();
-                });
+                    /** @type {any[]} */ thing.forEach((value, i) => {
+                        keys.push(`[${i}]`);
+                        walk(value);
+                        keys.pop();
+                    });
                     break;
 
                 case 'Set':
@@ -187,20 +190,20 @@ export function uneval(value, replacer?) {
                     }
                     break;
 
-                case "Int8Array":
-                case "Uint8Array":
-                case "Uint8ClampedArray":
-                case "Int16Array":
-                case "Uint16Array":
-                case "Int32Array":
-                case "Uint32Array":
-                case "Float32Array":
-                case "Float64Array":
-                case "BigInt64Array":
-                case "BigUint64Array":
+                case 'Int8Array':
+                case 'Uint8Array':
+                case 'Uint8ClampedArray':
+                case 'Int16Array':
+                case 'Uint16Array':
+                case 'Int32Array':
+                case 'Uint32Array':
+                case 'Float32Array':
+                case 'Float64Array':
+                case 'BigInt64Array':
+                case 'BigUint64Array':
                     return;
 
-                case "ArrayBuffer":
+                case 'ArrayBuffer':
                     return;
 
                 default:
@@ -264,40 +267,42 @@ export function uneval(value, replacer?) {
                 return `Object(${stringify(thing.valueOf())})`;
 
             case 'RegExp':
-                return `new RegExp(${stringify_string(thing.source)}, "${thing.flags
-                    }")`;
+                return `new RegExp(${stringify_string(thing.source)}, "${
+                    thing.flags
+                }")`;
 
             case 'Date':
                 return `new Date(${thing.getTime()})`;
 
             case 'Array':
-                const members = /** @type {any[]} */ (thing).map((v, i) =>
+                const members = /** @type {any[]} */ thing.map((v, i) =>
                     i in thing ? stringify(v) : ''
                 );
-                const tail = thing.length === 0 || thing.length - 1 in thing ? '' : ',';
+                const tail =
+                    thing.length === 0 || thing.length - 1 in thing ? '' : ',';
                 return `[${members.join(',')}${tail}]`;
 
             case 'Set':
             case 'Map':
                 return `new ${type}([${Array.from(thing).map(stringify).join(',')}])`;
 
-            case "Int8Array":
-            case "Uint8Array":
-            case "Uint8ClampedArray":
-            case "Int16Array":
-            case "Uint16Array":
-            case "Int32Array":
-            case "Uint32Array":
-            case "Float32Array":
-            case "Float64Array":
-            case "BigInt64Array":
-            case "BigUint64Array": {
+            case 'Int8Array':
+            case 'Uint8Array':
+            case 'Uint8ClampedArray':
+            case 'Int16Array':
+            case 'Uint16Array':
+            case 'Int32Array':
+            case 'Uint32Array':
+            case 'Float32Array':
+            case 'Float64Array':
+            case 'BigInt64Array':
+            case 'BigUint64Array': {
                 /** @type {import("./types.js").TypedArray} */
                 const typedArray = thing;
                 return `new ${type}([${typedArray.toString()}])`;
             }
 
-            case "ArrayBuffer": {
+            case 'ArrayBuffer': {
                 const ui8 = new Uint8Array(thing);
                 return `new Uint8Array([${ui8.toString()}]).buffer`;
             }
@@ -333,7 +338,7 @@ export function uneval(value, replacer?) {
             params.push(name);
 
             if (custom.has(thing)) {
-                values.push(/** @type {string} */(custom.get(thing)));
+                values.push(/** @type {string} */ custom.get(thing));
                 return;
             }
 
@@ -361,7 +366,7 @@ export function uneval(value, replacer?) {
 
                 case 'Array':
                     values.push(`Array(${thing.length})`);
-                    /** @type {any[]} */ (thing).forEach((v, i) => {
+                    /** @type {any[]} */ thing.forEach((v, i) => {
                         statements.push(`${name}[${i}]=${stringify(v)}`);
                     });
                     break;
@@ -379,14 +384,19 @@ export function uneval(value, replacer?) {
                     values.push(`new Map`);
                     statements.push(
                         `${name}.${Array.from(thing)
-                            .map(([k, v]) => `set(${stringify(k)}, ${stringify(v)})`)
+                            .map(
+                                ([k, v]) =>
+                                    `set(${stringify(k)}, ${stringify(v)})`
+                            )
                             .join('.')}`
                     );
                     break;
 
                 default:
                     values.push(
-                        Object.getPrototypeOf(thing) === null ? 'Object.create(null)' : '{}'
+                        Object.getPrototypeOf(thing) === null
+                            ? 'Object.create(null)'
+                            : '{}'
                     );
                     Object.keys(thing).forEach((key) => {
                         statements.push(
